@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        header {
+            height: 100px;
+            background-color: yellow;
+        }
+
+        nav {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        nav>ul {
+            display: flex;
+            /* 多了前后的两张 */
+            width: 800%;
+            /* 动画不能一开始就加，如果一开始就加了，会导致我们第一次的切换也是以动画的形式进行的 */
+            /* transition:transform 1s; */
+        }
+
+        li {
+            flex: 1;
+        }
+
+        li img {
+            width: 100%;
+            vertical-align: middle;
+        }
+
+        main {
+            height: 500px;
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        页面的头部
+    </header>
+    <nav>
+        <!-- li*6>a[#]>img[src=./images/$.jpg] -->
+        <!-- 为了实现无缝滚动，把图片列表前后加上1张，前后多了一张，要记得把ul的宽度改成 800% -->
+        <ul>
+            <li><a href="#"><img src="./images/6.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/1.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/2.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/3.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/4.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/5.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/6.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/1.jpg" alt=""></a></li>
+        </ul>
+    </nav>
+    <main>
+        其他布局
+    </main>
+</body>
+<script src='./zepto.js'></script>
+<script src='./touch.js'></script>
+
+<script>
+    let ul = $('nav ul');
+    // console.log(ul)
+    let imgWidth = $('nav').width();
+    // console.log(imgWidth)
+    let index = 1;
+    let moveLength = index * imgWidth * (-1);
+    console.log(moveLength)
+    ul.css('transform', 'translateX(' + moveLength + 'px)');
+    setTimeout(() => {
+        ul.css('transition', 'transform 200ms');
+    }, 10);
+    ul.on('swipeLeft', function () {
+        index++;
+        moveLength = index * imgWidth * (-1);
+        ul.css('transform', 'translateX(' + moveLength + 'px)');
+    })
+    ul.on('transitionend', function () {
+        if (index >= ul[0].children.length - 1) {
+            index = 1;
+        }
+        if (index <= 0) {
+            index = ul[0].children.length - 2;
+        }
+        ul.css('transition', '');
+        moveLength = index * imgWidth * (-1);
+        ul.css('transform', 'translateX(' + moveLength + 'px)');
+        setTimeout(() => {
+            ul.css('transition', 'transform 200ms');
+        }, 10);
+
+    })
+    ul.on('swipeRight', function () {
+        index--;
+        moveLength = index * imgWidth * (-1);
+        ul.css('transform', 'translateX(' + moveLength + 'px)');
+    })
+
+</script>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box {
+            width: 300px;
+            margin: 10px auto;
+            position: relative;
+        }
+        .sele{
+            position: absolute;
+            top: 60px;
+            left: 0;
+            width: 237px;
+            height: 290px;
+            background: url("./imgages/mi.png");
+        }
+        .displayed {
+            display: none;
+
+        }
+        #inp{
+            width: 300px;
+            height: 56px;
+            background: url("./imgages/search.png");
+        }
+    </style>
+</head>
+<body>
+    <div class= "box">
+        <input id="inp" type="text">
+        <div class="sele displayed" id = "qwer"></div>
+    </div>
+</body>
+    <script>
+        let inpu = document.getElementById('inp');      //根据id获得Input的对象
+        var selec = document.getElementsByClassName('sele');        //获取得到伪数组的时候注意
+        // document.getElementsByTagName
+        // var selec = document.getElementById('qwer');
+        // console.log(selec);
+        inpu.onfocus = function(){
+            selec[0].classList.remove('displayed'); 
+        }
+        inpu.onblur = function (){
+            selec[0].classList.add('displayed');
+        }
+        
+    </script>
+</html>

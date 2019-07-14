@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>开关练习</title>
+</head>
+<body>
+    <button type="button" id = "button">开关</button>
+</body>
+<script>
+    var bodyBgc = document.body;
+    var btn = document.getElementsByTagName("button");
+    // getElementsByTagName("button");      获得的是数组
+    var bl = 1;
+    btn[0].onclick=function(){
+        if( bl ==1 ){
+            bodyBgc.style.backgroundColor = 'yellow';       //获得变量后面后面的属性要有'.'的连接
+            console.log('已开');
+            bl = 0; 
+        }else{
+            bodyBgc.style.backgroundColor = "pink";
+            console.log('已关');
+            bl = 1;
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function getSum(n,m){
+            sum = 0;
+            for (var i=n;i<=m;i++){
+                sum = sum + i;
+            }
+            return sum;
+        }
+        // arr = prompt('输入两个数字，用\'\,\'隔开');
+        // arr = arr.split(',');
+        
+        var a = 4;
+        var b = 8;
+        console.log(getSum(a,b));
+        arr = prompt('输入两个数字，用\'\,\'隔开');
+        console.log(arr);
+        arr = arr.split(',');
+        var c=parseInt(arr[0]);
+        var d =parseInt(arr[1]);
+        console.log(c);
+        console.log(d);
+        console.log(getSum(c,d));
+        console.log(getSum(parseInt(arr[0]),parseInt(arr[1])));
+    </script>
+</body>
+</html>

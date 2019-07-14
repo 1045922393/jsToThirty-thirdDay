@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        div{
+            margin: 50px auto;
+            width: 800px;
+            overflow:hidden;
+        }
+        ul{
+            width: 1000px;
+            clear:both;
+           
+        }
+        li:nth-child(-n+5){
+            float: left;
+            list-style: none;
+            width: 200px;
+            height: 200px;
+        }
+        li:nth-last-child(1){
+            clear:both;
+            list-style: none;
+            /* width: 200px;
+            height: 200px; */
+        }
+        img{
+            display:block;
+            width: 100%;
+            height: 100%;
+        }
+        ul:hover li {
+            animation-play-state:paused;
+
+        }
+        li:nth-child(1){
+            animation: runfirst 0.9s infinite linear;
+        }
+        li:nth-child(2){
+            animation: runsecond 0.9s infinite linear;
+        }
+        li:nth-child(3){
+            animation: runthird 0.9s infinite linear;
+        }
+        li:nth-child(4){
+            animation: runforth 0.9s infinite linear;
+        }
+        li:nth-child(5){
+            animation: runfifth 0.9s infinite linear;
+        }
+        
+        @keyframes runfirst {
+            0%{
+                transform: translateX(0);
+            }
+            20%{
+                transform: translateX(-100%);
+            }
+            20.00001%{
+                transform: translateX(400%);
+                display:none;
+            }
+            40%{
+                transform: translateX(300%);
+            }
+            60%{
+                transform: translateX(200%);
+            }
+            80%{
+                transform: translateX(100%);
+            }
+            100%{
+                transform: translateX(0);
+            }
+        }
+        @keyframes runsecond{
+            0%{
+                transform: translateX(0);
+            }
+            20%{
+                transform: translateX(-100%);
+            }
+            
+            40%{
+                transform: translateX(-200%);
+            }
+            40.00001%{
+                transform: translateX(300%);
+                display:none;
+            }
+            60%{
+                transform: translateX(200%);
+            }
+            80%{
+                transform: translateX(100%);
+            }
+            100%{
+                transform: translateX(0);
+            }
+        }
+        @keyframes runthird{
+            0%{
+                transform: translateX(0);
+            }
+            20%{
+                transform: translateX(-100%);
+            }
+            
+            40%{
+                transform: translateX(-200%);
+            }
+            
+            60%{
+                transform: translateX(-300%);
+            }
+            60.00001%{
+                transform: translateX(200%);
+                display:none;
+            }
+            80%{
+                transform: translateX(100%);
+            }
+            100%{
+                transform: translateX(0);
+            }
+        }
+        @keyframes runforth{
+            0%{
+                transform: translateX(0);
+            }
+            20%{
+                transform: translateX(-100%);
+            }
+            
+            40%{
+                transform: translateX(-200%);
+            }
+            
+            60%{
+                transform: translateX(-300%);
+            }
+            
+            80%{
+                transform: translateX(-400%);
+            }
+            80.00001%{
+                transform: translateX(100%);
+                display:none;
+            }
+            100%{
+                transform: translateX(0);
+            }
+        }
+        @keyframes runfifth{
+            0%{
+                transform: translateX(0);
+            }
+            20%{
+                transform: translateX(-100%);
+            }
+            
+            40%{
+                transform: translateX(-200%);
+            }
+            
+            60%{
+                transform: translateX(-300%);
+            }
+            
+            80%{
+                transform: translateX(-400%);
+            }
+            
+            100%{
+                transform: translateX(-500%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div>
+            <ul>
+                    <li><img src="../01林允儿.png" alt=""></li>
+                    <li><img src="../02林允儿.png" alt=""></li>
+                    <li><img src="../03林允儿.png" alt=""></li>
+                    <li><img src="../04林允儿.png" alt=""></li>
+                    <li><img src="../05林允儿.png" alt=""></li>
+                    <!-- <li><img src="./006.jpg" alt=""></li> -->
+                    <li></li>
+                    <!-- <li><img src="./001.jpg" alt=""></li> -->
+
+            </ul>  
+    </div>
+</body>
+</html>     

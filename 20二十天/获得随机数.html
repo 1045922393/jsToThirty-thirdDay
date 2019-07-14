@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 获得四位随机字符
+        var arr = [0,1,2,3,4,5,6,7,8,9,'q','w','e','r','t','y','u','i','o','p','a','s','d','f','g','h','j','k','l','z','x','c'];
+        var q =Math.floor(Math.random()*arr.length);
+        var w =Math.floor(Math.random()*arr.length);
+        var e =Math.floor(Math.random()*arr.length);
+        var r =Math.floor(Math.random()*arr.length);
+        // var a = new Math();  //Uncaught TypeError: Math is not a constructor
+       
+        // console.log(arr[q].toString(),arr[w].toString(),arr[e].toString(),arr[r].toString());
+        
+    </script>
+    <script>
+        // 获得一个随机算术及答案
+        var arr = [0,1,2,3,4,5,6,7,8,9];
+        var brr = ['+','-','*','/'];
+        var q =Math.floor(Math.random()*arr.length);
+        var w =Math.floor(Math.random()*brr.length);
+        var e =Math.floor(Math.random()*arr.length);
+        console.log(arr[q]+brr[w]+arr[e]+'\=');
+        // var a = new Math();  //Uncaught TypeError: Math is not a constructor
+       
+        // console.log(arr[q].toString(),arr[w].toString(),arr[e].toString(),arr[r].toString());
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>冒泡排序
+        
+    </title>
+</head>
+<body>
+    
+</body>
+<script>
+var j = parseInt(prompt('有多少个数字要排序呢？'));
+    var arr=[];
+    for(i=0;i<j;i++){
+        arr[i]=parseFloat(prompt('请输入第'+(i+1)+'个数'));
+    }
+    document.write('所有输入的数如下\:');
+    for (i=0;i<j;i++){
+        document.write(arr[i]+' ');
+    }
+
+    for(i=0;i<j;i++){
+       for(n=i+1;n<j;n++){
+           if(arr[i]<arr[n]){
+               arr[i]=arr[i]^arr[n];
+               arr[n]=arr[i]^arr[n];
+               arr[i]=arr[i]^arr[n];
+           }
+       }
+    }
+    document.write('<br>大到小排序\：')
+    for (i=0;i<j;i++) {
+        document.write(arr[i]+' ');
+    }       
+
+</script>
+</html>

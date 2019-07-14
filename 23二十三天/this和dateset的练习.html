@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            margin: 10px auto;
+            text-align: center;
+        }
+        img{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="row columns">
+        <button class="name1" data-src="../002林允儿.jpg">1</button>        <!-- 自定义属性data-src -->
+        <button class="name2" data-src="../003座位表.JPG">2</button>
+        <button class="name3" data-src="../壁纸1366-762.jpg">3</button>
+        <button class="name4" data-src="../就业班座位表.png">4</button>
+    </div>
+    <div class="row"><img id="img1" src="../001林允儿.jpg" alt="林允儿"></div>
+</body>
+<script>
+    var btn = document.getElementsByTagName('button');
+    var imga =document.getElementById('img1');
+    for (var i = 0;i<btn.length;i++){           
+        btn[i].onclick = function(){     
+            imga.src = this.dataset.src;                //放进事件中，this指向事件源        // 对象.dataset.src 内置的属相
+        }
+    }
+    console.log(document.getElementsByClassName('row')[0].classList);   
+    //对象.classList 返回的是一个数组
+    //对象.className 返回的是一个字符串
+    console.log(document.getElementsByClassName('row')[0].className);   
+</script>
+</html>

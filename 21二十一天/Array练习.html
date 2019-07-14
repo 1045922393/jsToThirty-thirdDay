@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr = [5,8,41,23,64];
+        console.log(arr);
+        arr = [42,54,78,66,33];
+        console.log(arr);
+        var a = arr.pop();  //减少数组，无实参
+        console.log(a);
+        console.log(arr);
+        console.log(arr.valueOf());
+        arr.pop();
+        console.log(arr);
+        console.log(arr.concat(arr));   //[42, 54, 78, 42, 54, 78]
+        console.log(arr.concat(arr).slice(2,5));   //[78, 42, 54]   截取某个片段
+        
+    </script>
+</body>
+</html>

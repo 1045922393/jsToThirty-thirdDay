@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .wrapper {
+            width: 1000px;
+            height: 475px;
+            margin: 0 auto;
+            margin-top: 100px;
+        }
+
+        .tab {
+            border: 1px solid #ddd;
+            border-bottom: 0;
+            height: 36px;
+            width: 320px;
+        }
+
+        .tab li {
+            position: relative;
+            float: left;
+            width: 80px;
+            height: 34px;
+            line-height: 34px;
+            text-align: center;
+            cursor: pointer;
+            border-top: 4px solid #fff;
+        }
+
+        .tab span {
+            position: absolute;
+            right: 0;
+            top: 10px;
+            background: #ddd;
+            width: 1px;
+            height: 14px;
+            overflow: hidden;
+        }
+
+        .products {
+            width: 1002px;
+            border: 1px solid #ddd;
+            height: 476px;
+        }
+
+        .products .main {
+            float: left;
+            display: none;
+        }
+
+        .products .main.selected {
+            display: block;
+        }
+
+        .tab li.active {
+            border-color: red;
+            border-bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <ul class="tab">
+            <li class="tab-item active">国际大牌<span>◆</span></li>
+            <li class="tab-item">国妆名牌<span>◆</span></li>
+            <li class="tab-item">清洁用品<span>◆</span></li>
+            <li class="tab-item">男士精品</li>
+        </ul>
+        <div class="products">
+            <div class="main selected">
+                <a href="###"><img src="images/guojidapai.jpg" alt="" /></a>
+            </div>
+            <div class="main">
+                <a href="###"><img src="images/guozhuangmingpin.jpg" alt="" /></a>
+            </div>
+            <div class="main">
+                <a href="###"><img src="images/qingjieyongpin.jpg" alt="" /></a>
+            </div>
+            <div class="main">
+                <a href="###"><img src="images/nanshijingpin.jpg" alt="" /></a>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+    let liList = document.querySelectorAll('.tab-item');
+    let divList = document.querySelectorAll('.main');
+    liList.forEach((ele, ind) => {          //forEach(元素,索引)
+        ele.addEventListener('mouseover', moveover);
+        function moveover(e) {          //function(e)       e 事件对象
+            liList.forEach((tag, tagindex) => {     //forEach(标签，标签索引)
+                tag.classList.remove('active');
+            })
+            this.classList.add('active');
+            divList.forEach((eleme) => {
+                eleme.classList.remove('selected');
+            })
+            divList[ind].classList.add('selected');
+        }
+    });
+</script>
+
+</html>
+<!-- <script>
+/*
+    步骤分析：
+        1. 获取元素
+        2. 注册鼠标移入事件
+        3. 实现
+            3.1 为当前的li添加一个class叫active,把其他的移出一个class叫active
+            3.2 为当前的商品添加一个class叫selected，把其他商品移除一个class叫selected
+*/
+// 1 获取元素
+var items = document.querySelectorAll('.tab-item');
+var mains = document.querySelectorAll('.main');
+
+// 2 注册鼠标的移入事件
+for(var i = 0; i < items.length; i++){
+    items[i].index = i;
+    items[i].onmouseover = function(){
+        // 3.1 把其他的li移除class active
+        for(var j = 0; j < items.length; j++){
+            items[j].classList.remove('active');
+        }
+        // 把当前添加一个class active
+        this.classList.add('active');
+
+        //3.2 排他的设置商品的类名
+        for(var k = 0; k < mains.length; k++){
+            mains[k].classList.remove('selected');
+        }
+        mains[this.index].classList.add('selected');
+    }
+}
+
+// 使用classList 就不需要管，原来class是什么了！！！
+</script> -->

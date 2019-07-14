@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>五角星评分案例</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .comment {
+            font-size: 40px;
+            color: red;
+        }
+
+        .comment li {
+            float: left;
+            cursor: pointer;
+        }
+
+        ul {
+            list-style: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <ul class="comment">
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+    </ul>
+
+</body>
+<script src="./jquery-2.2.2.js"></script>
+<script>
+    let score = 0;
+    $('.comment li').on('mouseover', function () {
+        let ind = $(this).index();
+        $('.comment li').each(function (index, value) {
+            if (index <= ind) {     //
+                $(value).text('★');
+            } else {
+                $(value).text('☆');
+            }
+        })
+    })
+    $('.comment li').on('mouseout', function (e) {
+        $('.comment li').each(function (index, value) {
+            if (index <= score) {
+                $(value).text('★');
+            } else {
+                $(value).text('☆');
+            }
+        })
+    })
+    $('.comment li').on('click', function () {
+        score = $(this).index();
+        // let ind = $(this).index();
+        // $('.comment li').each(function (index, value) {
+        //     if (index <= ind) {
+        //         $(value).text('★');
+        //     } else {
+        //         $(value).text('☆');
+        //     }
+        // })
+        // $('.comment li').off('mouseover');
+        // $('.comment li').off('mouseout');
+
+    })
+</script>
+
+</html>

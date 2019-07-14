@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>图片随着鼠标</title>
+    <style>
+        img {
+            position: absolute;
+            width: 60px;
+            
+        }
+        body{
+            height: 2000px;
+        }
+    </style>
+</head>
+<body>
+    <img src="../01林允儿.png" alt="">
+    
+</body>
+    <script>
+        document.onmousemove=function(e){
+            document.querySelector('img').style.top=e.pageY+'px';
+            document.querySelector('img').style.left=e.pageX+'px';  //整个页面
+        }
+    </script>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+
+    </div>
+</body>
+<script src="./js/jquery-2.2.2.js"></script>
+<script>
+    $('div').animate({ left: `600px` }, 2000)
+        .animate({ top: `600px` }, 2000)
+        .animate({ top: 0 }, 2000).animate({ left: 0 }, 2000).on('click', function () {
+            $(this).stop(true, true);
+            $(this).stop(false, false);
+            $(this).stop(true, false);
+            $(this).stop(false, true);
+        })
+
+</script>
+
+</html>

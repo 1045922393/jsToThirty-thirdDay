@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>String</title>
+</head>
+<body>
+    
+</body>
+<script>
+	var a =String(false);	//false
+	console.log(a);		
+	var b =new String(false);	//String?{"false"}
+	console.log(b);
+	var c =Number(null);			//0
+	console.log(c);
+	var d =new Number(null);		//Number?{0}
+	console.log(d);
+	var e = Number('123asdf');		//NaN
+	console.log(e);
+	var f = new Number('123asdf');		//Number?{NaN}
+	console.log(f);
+</script>
+</html>

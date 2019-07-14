@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    function Yhi(name, age, gender) {
+        this.Name = name;
+        this.Age = age;
+        this.Gender = gender;
+        this.Running = function () {
+            console.log('run over');
+        }
+    }
+    let Mine = new Yhi('aaa', 1111, 'boy');
+    Mine.Running();             //run over
+    console.log(Mine.Name, Mine.Age, Mine.Gender);//aaa 1111 boy
+
+
+    let meihua = {};//字面量定义对象
+    let zuzi = new Object();//函数构造对象
+</script>
+
+</html>

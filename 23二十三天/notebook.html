@@ -1,0 +1,72 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>notebook</title>
+ </head>
+ <body>
+     <pre>
+         DOM树
+
+         节点：页面所有东西都是节点，例如属性、元素、文字等等
+
+         DON三步走
+         获得元素   注册事件    执行事件
+         1、document.getElementById  document.getElementsByTagName   document.getElementsByClassName
+            2、固定格式
+                事件源.on事件类型= 执行事件内容
+                    3、执行事件代码
+
+        事件
+        onclick 点击
+        onfocus    光标聚焦
+        onblur   取消聚焦
+
+        document.getElementsByTagName   获得的是一个标签伪数组，HTMLCollection的对象名
+
+        何为伪数组
+        伪数组(现在接触到的有arguments和document.getElementsByTagName和classList)是有数组的属性(length()等)，没有数组的方法(push()等)。
+                    
+            已经被定义好了的基本属性
+            图片元素对象.src
+            元素对象.href
+            元素对象.className          //class在JS中是一个关键字
+            元素对象.id
+            元素对象.title
+            表单元素对象.value
+
+        表单元素对象.特殊属性(diabled\checked\selected)   //返回值和设置值都是布尔类型
+
+        自定义属性——给元素存在一个和它相关的属性而自己定义的属性    &lt;div data-src='../001林允儿.jpg'&gt;&lt;/div&gt;
+        在标签以  data-自定义属性名   命名自定义属性                div.dataset.src
+        然后在js用  对象名.dataset.自定义属性名 可以快速获得
+
+        this.属性(方法) 
+        this的第二个使用地方，事件处理程序中，直接指向事件源
+
+        //对象.classList 返回的是一个数组
+        //对象.className 返回的是一个字符串
+
+        对象名.getAttribute("属性名称")     //获得属性值
+        对象名.setAttribute("属性名称","值");    //设置属性值
+        对象名.removeAttribute("属性名");    //移除属性值
+
+        快速获取body元素    document.body   //在页面只有个body，js封装好document对象的属性body
+        元素变量名.style.backgroundColor='';        //直接赋值，修改背景颜色
+        元素变量名.classList.add('','','');       //加多个类名逗号隔开
+        元素变量名.classList.remove('','','');      //移除多个类名逗号隔开
+        元素变量名.classList.toggle('');            //只放一个
+        元素变量名.classList.contain('');       //判断是否有括号里面的类名，返回一个布尔值
+
+        let 关键字  与 var 关键字
+        let 作用域只对一个{}的作用域上有效
+        不会被预解析和提升
+        用let声明的变量不会再被重复声明
+        </pre>           
+ </body>
+ <script>
+    
+</script>
+ </html>

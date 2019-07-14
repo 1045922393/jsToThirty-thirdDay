@@ -1,0 +1,161 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>微博发布效果</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .weibo {
+            width: 600px;
+            border: 1px solid #ccc;
+
+            margin: 100px auto;
+            padding: 10px;
+
+        }
+
+        .weibo-text {
+            width: 590px;
+            height: 140px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            outline: none;
+            resize: none;
+        }
+
+        .weibo-text:focus {
+            border-color: #f60;
+        }
+
+        .weibo-btn {
+            width: 80px;
+            height: 30px;
+            background-color: #f90;
+            color: #fff;
+            border: 0 none;
+            margin-top: 5px;
+            border-radius: 3px;
+            cursor: pointer;
+            outline: 0 none;
+        }
+
+        .weibo-list {
+            padding-top: 10px;
+        }
+
+        .weibo-list li {
+            font-size: 14px;
+            line-height: 30px;
+            border-bottom: 1px dotted #ccc;
+            overflow: hidden;
+        }
+
+        .weibo-list li p {
+            float: left;
+        }
+
+        .weibo-list li span {
+            float: right;
+            cursor: pointer;
+        }
+
+        .weibo-list li input {
+            height: 24px;
+            line-height: 24px;
+            width: 300px;
+            font-size: 14px;
+            border: 0 none;
+        }
+        /* li{
+            transform: rotate(20deg);
+        } */
+    </style>    
+</head>
+
+<body>
+<div class="weibo">
+    <textarea class="weibo-text"></textarea>
+    <input class="weibo-btn" value="发布" type="button" id="button">
+    <ul class="weibo-list">
+        <li>
+            <p>快来收了这九款用上就停不下来的应用吧！！</p>
+            <span>删除</span>
+        </li>
+        <li>
+            <p>超级详细的云南大理自助游攻略</p>
+            <span>删除</span>
+        </li>
+        <li>
+            <p>外国最近很火的舞蹈，舒服简单自然，太棒了！</p>
+            <span>删除</span>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
+
+<script>
+    let btn = document.getElementById('button');
+    let commit = document.querySelector('.weibo-text');
+    // let li = document.querySelector('li');
+    let ulList = document.querySelector('.weibo-list');
+    btn.addEventListener('click',fuck);
+    function fuck(){
+        let content = commit.value;
+        // console.log(content);
+        let newli = document.createElement('li');
+        newli.innerHTML = '<p>'+content+'</p><span>删除</span>';
+        ulList.insertBefore(newli,ulList.children[0]);    //Uncaught TypeError: Failed to execute 'insertBefore' on 'Node': parameter 1 is not of type 'Node'.
+        commit.value ='';
+    }
+    ulList.addEventListener('click',del);
+    function del(e){
+        if(e.target.nodeName==='SPAN'){
+            console.log(111);
+            ulList.removeChild(e.target.parentNode);
+        }
+    }
+
+</script>
+<!-- <script>
+/*
+  点击发布，把文本域里面的内容，作为新的li添加到ul里面
+
+  步骤：
+    1.获取按钮、文本域、ul
+    2.给按钮注册点击事件
+      3.在事件处理程序里面
+        3.1 从文本域获取内容
+        3.2 创建一个新的li - document.creatElement
+        3.3 使用innerHTML给li创建两个子元素
+        3.4 添加到ul里面
+*/
+// 获取元素
+let btn = document.querySelector('.weibo-btn');
+let text = document.querySelector('.weibo-text');
+let list = document.querySelector('.weibo-list');
+// 给按钮注册点击事件
+btn.onclick = function(){
+  // 获取内容
+  let content = text.value;// 所有的表单元素的内容，都是value属性获取的，非表单的内容可以通过innerText获取
+  // 使用document.createElement创建新的li
+  let li = document.createElement('li');
+  // li.innerText = content;
+  // 给li创建两个子元素
+  li.innerHTML = '<p>'+ content +'</p><span>删除</span>';
+  // 把li放到ul里面 - 把创建好的li，放到最前面
+//   list.appendChild(li);
+// 使用insertBefore放到最前面 ， 插入到第一个子元素之前
+    // 父元素.insertBefore(新,旧)
+  list.insertBefore(li,list.children[0]);
+  // 细节处理： 把文本域的内容清空
+  text.value = '';
+}
+</script> -->

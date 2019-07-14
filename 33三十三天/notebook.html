@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <pre>
+        js高级
+              面相对象--作用高度封装代码     
+                封装\继承\多态     
+        构造函数
+            原型    prototype   也是对象
+                该对象可以为构造函数的实例对象 提供方法
+                    构造函数的使用  Person.pro
+
+        instanceof  判断一个对象是否由一个构造函数new出来的对象
+        arr instanceof Array 
+
+        作用链
+        div>HTMLDivElementHTMLElement>Element>Node>EventTarget>Object>null
+
+        一个对象没有属性,返回值是undefined,而
+        Person.prototype.__proto__.__proto__.__proto__
+        返回的是null,其中Person是自定义构造函数
+
+        借用构造函数继承+原型继承=>组合使用称为组合继承
+
+        构造函数继承格式    大分类构造函数.call(this,形参沿用全部大分类构造函数的形参)      //当有不需要的值的时候,用null占位
+
+        call作用:调用函数,往第一个形参上加入一个对象,后面形参往后推
+
+        原型继承格式
+        小分类的构造函数名.prototype = new 大分类的构造函数名()
+        //原型继承会导致原型没有constructor属性     地址赋值
+        小分类构造函数名.prototype.constructor = 小分类构造函数名;
+
+        原型对象身上的this,指向调用方法的实例对象
+
+        let bigBox = jQuery('.bigBox');     //调用jQuery函数
+        bigBox.css('width',200);
+
+        function jQuery(selector){                  
+            return new Init(selector);          //创建实例对象,返回给调用jQuery函数的对象
+        }
+
+        function Init(selector){                    
+            let dom = document.querySelectorAll(selector);          //
+            for(let i = 0;i小于dom.length;i++){
+                this[i] = dom[i];
+            }
+            this[length] = dom[length]
+        }
+        Init.prototype.css = function(property,value){
+            for(let i = 0;i小于this.length;i++){
+                this[i].style[property] = value + 'px';
+            }
+
+        }
+
+    </pre>
+</body>
+
+</html>

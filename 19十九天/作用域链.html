@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var i = 30;
+        function a(){
+            function b(){
+                console.log(i);
+                // var i = 20;
+                // 作用域 定义和函数的定义放最前，赋值和函数的调用位置不变
+                // JS的是一行一行编译和执行的
+            }
+            b();
+            i = 200;
+        }
+        a();
+    </script>
+</body>
+</html>

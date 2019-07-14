@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // function fn(){
+    // console.log(arguments);
+    // }
+    // fn(1); // 输出 [1]
+    // fn(1,2) // 输出 [1,2]
+    // fn(1,2,3,4,5) // 输出 [1,2,3,4,5]
+
+    function fn(){
+        var a=arguments;
+        var suma=0;
+        var sumb=0;
+        for(var i =0 ;i<a.length;i++){
+            suma= suma +a[i];
+        }
+        var b=arguments;
+        for(var j = 0;j<b.length;j++){
+            sumb=sumb+b[j];
+        }
+    console.log(suma);
+    console.log(sumb);
+    }
+    fn(1,2,3,4);// 正常执行，不会报错
+    //document.write(fn(1,2,3,4));    //3
+    function arr(z){
+        z=arguments
+    }
+
+   
+    function fun(){
+        // var numb;
+        console.log(numb);  //10
+        numb = 20;  
+    }
+    var numb = 10;
+    fun();
+    console.log(numb);  //20
+    
+    </script>
+
+    <script>
+        var a123 = 10;
+        var b123 = 20;
+        function fn(x11,y11) {
+            // x11= 100;
+            y11= 200;
+            x111 = 10;
+            console.log(x11,y11);
+        }
+        fn();
+        console.log(a123,b123,x111);//?????/
+        // console.log(y11);
+        
+    </script>
+
+    
+</body>
+</html>

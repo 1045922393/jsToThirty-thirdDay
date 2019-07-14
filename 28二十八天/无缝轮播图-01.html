@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        header {
+            height: 100px;
+            background-color: yellow;
+        }
+
+        nav {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        nav>ul {
+            display: flex;
+            /* 多了前后的两张 */
+            width: 800%;
+            /* 动画不能一开始就加，如果一开始就加了，会导致我们第一次的切换也是以动画的形式进行的 */
+            /* transition:transform 1s; */
+        }
+
+        li {
+            flex: 1;
+        }
+
+        li img {
+            width: 100%;
+            vertical-align: middle;
+        }
+
+        main {
+            height: 500px;
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        页面的头部
+    </header>
+    <nav>
+        <!-- li*6>a[#]>img[src=./images/$.jpg] -->
+        <!-- 为了实现无缝滚动，把图片列表前后加上1张，前后多了一张，要记得把ul的宽度改成 800% -->
+        <ul>
+            <li><a href="#"><img src="./images/6.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/1.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/2.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/3.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/4.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/5.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/6.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/1.jpg" alt=""></a></li>
+        </ul>
+    </nav>
+    <main>
+        其他布局
+    </main>
+</body>
+<script src='./zepto.js'></script>
+<script src='./touch.js'></script>
+<script>
+    let ul = $('nav ul');
+    let imgWidth = $('nav').width();
+    // console.log(imgWidth)
+    let index = 1;
+    let moveOffLength = index * imgWidth * (-1);
+    ul.css('transform', 'translateX(' + moveOffLength + 'px)');
+    setTimeout(function () {
+        ul.css('transition', 'transform 200ms');
+    }, 10);
+    ul.on('swipeLeft', function () {
+        index++;
+        moveOffLength = index * imgWidth * (-1);
+        ul.css('transform', 'translateX(' + moveOffLength + 'px)');
+    })
+    ul.on('transitionend', function () {
+        if (index >= ul[0].children.length - 1) {
+            ul.css('transition', '');
+            index = 1;
+            moveOffLength = index * imgWidth * (-1);
+            ul.css('transform', 'translateX(' + moveOffLength + 'px)');
+
+            setTimeout(function () {
+                ul.css('transition', 'transform 200ms');
+            }, 10);
+        }
+    })
+    ul.on('swipeRight', function () {
+        index--;
+        moveOffLength = index * imgWidth * (-1);
+        ul.css('transform', 'translateX(' + moveOffLength + 'px)');
+    })
+    ul.on('transitionend', function () {
+        if (index <= 0) {
+            ul.css('transition', '');
+            index = ul[0].children.length - 2;
+            moveOffLength = index * imgWidth * (-1);
+            ul.css('transform', 'translateX(' + moveOffLength + 'px)');
+            setTimeout(function () {
+                ul.css('transition', 'transform 200ms');
+            }, 10);
+        }
+    })
+    /*知识点有
+        <script src = 'zepto.js'>
+            <script src = 'touch.js'>
+        ul=$('选择器')
+            ul.css('属性','值');
+        ul.on('事件','事件行为')
+    navWidth=$('nav').width();
+    'swipeLeft' 事件    往左滑动
+    'swipeRight' 事件    往右滑动
+
+        setTimeout(function () {
+            ul.css('transition', 'transform 200ms');
+        }, 10);
+    */
+</script>
+
+</html>

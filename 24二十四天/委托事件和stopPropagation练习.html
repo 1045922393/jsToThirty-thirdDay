@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 300px;
+            height: 300px;
+            margin: 10px auto;
+            background-color: #ff0;
+            overflow:hidden;
+        }
+        .box1{
+            width: 200px;
+            margin: 10px auto;
+            height: 200px;
+            background-color: rgb(0, 195, 255);
+            overflow:hidden;
+        }
+        .box2{
+            width: 100px;
+            margin: 10px auto;
+            height: 100px;
+            background-color: rgb(0, 255, 128);
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="box1">
+            <div class="box2">
+                <span>123123</span>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    let box = document.querySelector('.box');
+    let box1 = document.querySelector('.box1');
+    let box2 = document.querySelector('.box2');
+    // box.onclick=function(e){
+    //     if(e.target==box2){
+    //     console.log(e);
+    //         console.log('qew');
+    //     }
+    // }
+    box2.onclick=function(e){
+        console.log('asf2');
+        e.stopPropagation();
+    }  
+    box1.onclick=function(e){
+        console.log('asf1');
+        e.stopPropagation();
+    }  
+    box.onclick=function(){
+        console.log('asf');
+    }
+</script>
+</html>

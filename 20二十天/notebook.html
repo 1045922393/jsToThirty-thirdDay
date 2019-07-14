@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        对象
+        例如  Math    Date
+        对象的调用   var test-date = new Date();
+        操作对象实现相应结果  var test-year = test-date.getElementFullYear();
+
+        创建对象
+        var obj = new Object();
+        var obj = {};   //字面量方式
+        以上两个都是空的没有属性和方法的对象
+
+        为对象添加属性和方法
+        对象.属性 = 值;
+        添加方法的语法:
+        对象.方法名 = function(){}
+        ogj.name = test-Yhi;    //定义对象的属性，对象的属性相当于变量，存储数据
+        ogj.tellName = function(obj.name){
+            console.log('my name is'+obj.name);
+        }   //定义对象的方法，对象的方法相当于函数
+
+        访问属性和方法有三种
+        对象.属性名
+        对象.行为
+        对象['属性名'] //    对象[key] 遍历对象,与for-in搭配，key只是个变量，可以是其他单词，主要是for-in搭配
+        
+        对象=变量+函数
+        把定义对象的过程封装成函数，便成了自定义构造函数
+
+        自定义构造函数
+        1、自定义函数名约定首字母大写
+        2、在函数的参数的位置，写对象所拥有的特征
+        3、用 this.属性名=形参   定义特征， this.方法名=function{方法} 定义对象的方法
+        4、结构
+            function 函数名/*同时也是对象类型*/(形参){
+                this.属性名=值/*形参*/;
+                this.方法名= function(){
+                    方法执行的代码;
+                }
+            }
+            调用函数
+            var 对象名 = new 函数名(实参);
+            使用对象的属性和方法
+            对象名.属性名;
+            对象名.方法名();
+            
+
+        this和new关键字
+        this是js中内部关键字，在函数中代表着函数的一个对象，如果在自定义构造函数中则指向被new出来的等号左边的对象
+        
+        new在创建对象的过程中，做了这么几件事情
+        1.先创建一个对象  相当于： a = new Object()
+        2.调用构造函数，把构造函数中的this 指向 上一步创建的对象 相当于：this = a;
+        3.依次执行构造函数中的代码，给this添加属性和方法
+        4.返回this所指向的对象  相当于：return this
+
+        值类型和引用类型
+        值类型存储在栈里面，引用类型存储在堆里面
+        如果实参传递给形参的是值类型则形参不影响实参。
+        如果实参传递给形参的是引用类型则形参会影响实参。
+    </pre>
+</body>
+</html>

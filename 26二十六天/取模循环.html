@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        img{
+            display: block;
+            width: 400px;
+            margin: 40px auto;
+        }
+        body{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <img src="../01林允儿.png" alt="">
+    <button>操作</button>
+</body>
+    <script>
+        let imga = document.querySelector('img');
+        let btn = document.querySelector('button');
+        // let i = 1;
+        let runornot = true;
+        // let timerunning;
+        let delay =0;
+      
+        btn.onclick=function(){
+            delay++;
+            imga.src = "../0"+(delay%6+1)+"林允儿.png";
+        }
+           
+        
+        imga.addEventListener('mouseover',mouseover);
+        function mouseover(){
+            runornot = false;
+        }
+        imga.addEventListener('mouseout',mouseout);
+        function mouseout(){
+            runornot = true;
+        }
+        
+    </script>
+</html>

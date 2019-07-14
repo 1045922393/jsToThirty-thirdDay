@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function Person(nameVal, ageVal, genderVal, colorVal) {
+        this.name = nameVal;
+        this.age = ageVal;
+        this.gender = genderVal;
+        this.color = colorVal;
+    }
+    Person.prototype.running = function () {
+        console.log('run fast');
+    }
+    function Car(nameVal, colorVal, priceVal) {
+        Person.call(this, nameVal, null, null, colorVal);
+        this.price = priceVal;
+    }
+    // console.log(new Person(1, 2, 3, 4))
+    Car.prototype = Person.prototype;    //Car是构造函数,Car.prototype是原型对象     Person的原型对象变成Car构造函数的原型对象     似乎赋值形式是地址赋值
+    //Car.prototype = new Person();           //constructor   建造者,制造者
+    // console.dir(Person)
+    console.log(Car);
+    Car.left = '456';
+    Car.prototype.constructor = Person;
+    Car.left = '123';
+    console.log(Car);
+    console.dir(Person.prototype.constructor)
+    Car.prototype.stopping = function () {
+        console.log('stop now')
+    }
+    let ranger = new Car();
+    ranger.name = '路虎';
+    ranger.color = '红色';
+    ranger.price = '一百万';
+    console.dir(ranger)
+
+    Person.prototype.crying = function () {
+        console.log('crying loudly')
+    }
+    let p1 = new Person();
+    p1.name = '胡三';
+    p1.age = '11';
+    p1.gender = 'boy';
+    console.dir(p1)
+</script>
+
+</html>

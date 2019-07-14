@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>微博发布效果</title>
+    <script src="../拓展资料/MyTools/封装日期.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .weibo {
+            width: 600px;
+            border: 1px solid #ccc;
+
+            margin: 100px auto;
+            padding: 10px;
+
+        }
+
+        .weibo-text {
+            width: 590px;
+            height: 140px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            outline: none;
+            resize: none;
+        }
+
+        .weibo-text:focus {
+            border-color: #f60;
+        }
+
+        .weibo-btn {
+            width: 80px;
+            height: 30px;
+            background-color: #f90;
+            color: #fff;
+            border: 0 none;
+            margin-top: 5px;
+            border-radius: 3px;
+            cursor: pointer;
+            outline: 0 none;
+        }
+
+        .weibo-list {
+            padding-top: 10px;
+        }
+
+        .weibo-list li {
+            font-size: 14px;
+            line-height: 30px;
+            border-bottom: 1px dotted #ccc;
+            overflow: hidden;
+        }
+
+        .weibo-list li p {
+            float: left;
+        }
+
+        .weibo-list li span {
+            float: right;
+            cursor: pointer;
+        }
+
+        .weibo-list li input {
+            height: 24px;
+            line-height: 24px;
+            width: 300px;
+            font-size: 14px;
+            border: 0 none;
+        }
+
+        .time {
+            margin-right: 10px;
+            font-style: normal;
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="weibo">
+        <textarea class="weibo-text"></textarea>
+        <input class="weibo-btn" value="发布" type="button" id="button">
+        <ul class="weibo-list">
+            <!-- <li>
+            <p class="content">快来收了这九款用上就停不下来的应用吧！！</p> 
+            <span class="del">删除</span>
+            <span class="time">2019</span>
+        </li> -->
+        </ul>
+    </div>
+</body>
+
+</html>
+<script>
+    // dates.total 获得时间
+    let btn = document.getElementById('button');
+    let textarea = document.querySelector('.weibo-text');
+    let ullist = document.querySelector('.weibo-list');
+    btn.addEventListener('click', turnUp);
+    // JSON.parse(localStorage.getItem);
+    let item = JSON.parse(localStorage.getItem('firstKeep'));
+    let arrKeep = item || [];
+
+    function turnUp() {
+        let newList = document.createElement('li');
+        newList.id = randomID();
+        newList.innerHTML = '<p class="content">' + textarea.value + '</p><span class="del">删除</span><span class="time">' + getTime() + '</span>';
+
+        ullist.insertBefore(newList, ullist.children[0]);
+        let datasKeep = {
+            //contect=textarea.value,             //Uncaught SyntaxError: Invalid shorthand property initializer
+            contect: textarea.value,
+            id: newList.id,
+            upTime: getTime()
+        }
+        arrKeep.push(datasKeep);    //推进数组中保存
+        // // console.log(arrKeep);
+        localStorage.setItem('firstKeep', JSON.stringify(arrKeep));
+        textarea.value = '';
+    }
+    // let HTML = '';
+    // ullist.innerHTML = HTML+ 
+    // '<p class="content">快来收了这九款用上就停不下来的应用吧！！</p> '+
+    // '<span class="del">删除</span>'+
+    // '<span class="time">2019</span>'
+    // let forever = '';
+
+    //console.log(JSON.parse(localStorage.getItem('firstKeep')));    //得到本地存库
+    let ulall = new String();
+    for (let i = item.length - 1; i >= 0; i--) {
+        ulall = ulall + '<li id=' + item[i].id + '><p class="content">' + item[i].contect + '</p><span class="del">删除</span><span class="time">' + item[i].upTime + '</span></li>'; //使用遍历，让所有的结构写成字符串格式
+    }
+    // console.log(ulall);
+    ullist.innerHTML = ulall;   //将从本地存库拿出来的item全部出入ul里面
+    function randomID() {
+        function randomNM(n, m) {
+            return Math.floor(Math.random() * (m - n + 1) + n);
+        }
+        return new Date().getTime() + '' + randomNM(100000, 999999);
+    }
+    ullist.addEventListener('click', dele);
+    function dele(e) {
+        let liId;
+        if (e.target.className == 'del') {
+            liId = e.target.parentNode;
+            // console.log(liId);
+            ullist.removeChild(liId);
+            // console.log(e.target.parentNode.id);
+            item.forEach((eee, iii) => {
+                // console.log(e.id);
+                // console.log(liId.id);
+                if (liId.id == eee.id) {
+                    item.splice(iii, 1);
+                    localStorage.setItem('firstKeep', JSON.stringify(item));        //将虚拟数组存进本地存储
+                }
+            })
+
+        }
+    }
+
+    textarea.addEventListener('keydown', keyUp);
+    function keyUp(e) {
+        if (e.ctrlKey && e.keyCode == '13') {
+            turnUp();
+        }
+    }
+
+
+
+        // for(i = arrKeep.length-1;i>=0;i--){     //遍历数组，保存在location
+        //         // JSON.stringify(arrKeep[i]);
+        //         // localStorage.setItem('key','value');
+        //         localStorage.setItem("fsadf",JSON.stringify(arrKeep[i]));
+        //     }
+</script>

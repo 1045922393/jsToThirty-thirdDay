@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <pre>
+            jq的注册事件
+                jq对象.on(事件类型,处理程序)
+            jq的委托事件
+                jq的父对象.on(事件类型,子选择器,{键值对},function(){
+                    e.date      //属性返回自己传入的键值对
+                })
+
+            jq的事件解绑
+                jq对象.off([事件类型],[子选择器],[函数名称])
+
+            隐式迭代
+                jq对象.each(function(i,e){})        //i是索引,e是jq伪数组中每个DOM元素
+        
+            jq对象.trigger(事件类型)    ==      jq对象.事件类型()
+        
+            $.noConflict()
+            jQuery.noConflict()      //释放$的使用权
+
+            let $$=jQuery.noConflict()      //另外绑定其他特殊符
+
+            jq插件引用在主体的后面  
+            jQuery.color.js     使jQuery拥有颜色动画功能
+
+            jq拓展静态方法  //不对jq对象使用
+                $.方法名 = function(){}
+
+            jq拓展动态方法  //对jq对象使用
+                $.fn.方法名 = function(){}
+        </pre>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+/*
+  回调函数
+    回调函数是 ： 以参数的形式传入另外一个函数的函数，然后在另一个函数的特定时机进行调用的函数
+
+    有一个函数a，作为函数b的参数，在函数b的特定时机，进行调用
+*/
+
+function f1(a,fn){
+ 
+  console.log(a);
+  console.log(fn);
+  // if(typeof fn === 'function') {fn();}
+  // 可以使用短路运算来简化这个过程
+} 
+function f2(){
+  console.log('3211');
+}
+f1('abc',f2);// f2就是f1的回调函数
+
+// f1('abc');
+</script>
+</html>

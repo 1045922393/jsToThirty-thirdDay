@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        解绑事件
+        1   元素对象.onclick = null;
+        2   元素对象.removeEventListener('click',函数名);
+
+        innerHTML
+        innerText
+        innerHTML      HTML 超文本标记语言，支持 HTML 标签作为内容添加
+        innerText	   Text 纯文本，以文本方式把内容添加到盒子中，是属性，后面用 '='
+
+        document.innerHTML()    列表数据渲染
+        document.createElement()     单行添加
+        var div = document.createElement('tagName');
+        document.body.appendChild(div);     //追加节点  appendChild();
+
+        ondblcliick 鼠标双击
+        鼠标移入    onmouseover  鼠标鼠标移出  onmouseout
+        keydown     键盘按键按下触发    keyup   键盘按键弹起触发
+
+
+        元素对象.cloneNode(true);   被克隆的节点及其以下会所有子节点（结构保持不变）
+        元素对象.cloneNode(false);  只复制并返回当前节点。
+
+        元素对象.children;      //返回一个伪数组，使用时要加索引
+
+        insertBefore()
+
+        元素对象.removeChild(要删除的节点对象名)    //移除节点 返回值是被移除的元素
+    
+        - 父节点
+        - parentNode 返回父元素节点，是一个属性
+        - 子节点
+        - children 返回子元素节点，伪数组
+        - 下一个兄弟节点
+        - nextElementSibling 只会获取下一个元素节点
+        - 上一个兄弟节点
+        - previousElementSibling
+        - 第一个子节点
+        - firstElementChild
+        - 最后一个子节点
+        - lastElementChild
+        
+        事件对象
+        事件对象其实就是记录了事件被触发时候，包含的一些事件相关的信息，把这些信息用一个对象整体管理起来。
+
+        事件对象常用属性
+        e.属性
+
+        | 事件对象属性      | 描述                                           | 备注                         |
+        | ----------------- | ---------------------------------------------- | ---------------------------- |
+        | type              | 事件类型                                       |                              |
+        |                   |                                                |                              |
+        | target            | 事件目标                                       |                              |
+        | srcElement        | 事件目标                                       |                              |
+        |                   |                                                |                              |
+        | clientX / clientY | 基于浏览器的可视区域，鼠标坐标值               | 可配合固定定位，基于窗口定位 |
+        | pageX / pageY     | 基于整个页面，页面滚动有关，鼠标在页面的坐标值 | 可配合绝对定位，基于页面定位 |
+        |                   |                                                |                              |
+        | keyCode           | 获取键盘编码                                   |                              |
+        | which             | 获取键盘编码                                   |  回车键编码13                              |
+
+       
+        事件对象常用方法
+        - event.stopPropagation() 阻止事件触发后传播(阻止冒泡)
+        - event.preventDefault() 取消默认行为，如a标签的跳转
+
+        字符串.trim()   字符串修剪首尾空格  
+        
+        委托事件中两种判断方式
+        1、event.target.nodeName ==="LI";
+        2、event.target.className ==="item"
+
+        BOM brower object model 浏览器对象模型
+
+        window  整个网页编程中顶级对象，代表是整个浏览器对象
+        window.alert === alert 
+        window.prompt === prompt    习惯省略了window
+        全局变量和全局函数其实都是添加 window 对象下的
+        var aaaa;
+        aaaa === window.aaaa
+        -----------------------------------------------   
+        function fn(){
+            alert();
+        }
+        fn === window.fn 
+
+        document 对象其实也是 window 对象下的其中一个子对象
+        document === window.document
+
+        BOM包括了DOM
+        
+        window.onload = function (){
+            加载完毕事件，该事件会在页面加载完毕的时候执行
+        }
+
+        window.location 对象 - 位置，地点
+        location.href       //地址栏里面的内容
+    
+        定时器
+        setTimeout(function(){},延迟时间);  延迟时间ms单位  一次性定时器    返回值是该定时器的ID，该返回值会用于停止定时器的使用
+            --clearTimeout(定时器id)
+        
+        setInterval(function(),间隔时间);
+            --clearInterval(定时器id)
+
+            箭头函数    多用于回调函数  里面的this永远指向上一级的作用域
+            (参数列表)=>{函数体}
+            如果函数只有一个参数可以简写成  形参 =>{函数体}
+            如果函数体只有一句可以简写成    (参书列表)=> 函数语句
+            如果只有一个参数一句函数体  形参=>函数语句
+           
+           
+            回顾 三种声明函数方法
+            var 函数名 = function(){}
+            function 函数名(){}
+            var 函数名 = ()=>{}
+    </pre>
+</body>
+</html>

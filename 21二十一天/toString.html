@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>String</title>
+</head>
+<body>
+    <script>
+        var a = 1234;
+        console.log(String(a));
+        console.log(true);
+        var b= new Number(231);
+        var c = new String('asdf');
+        console.log(String.valueOf());
+        console.log(c);
+        for(var d in c){
+            console.log(c[d]);
+        }
+        console.log(c);
+
+        var meng = '456';
+        meng = Number(meng);
+        console.log(meng);
+        console.log(typeof(meng));
+        for(var i =0;i<meng.length;i++){
+            console.log(meng[i]);
+        }
+        var ard = [1,5,9,7,5,9,1,4,86,2];
+        console.log(typeof(ard));
+        console.log(ard.indexOf(9,3));//indexOf检索
+    </script>
+</body>
+</html>

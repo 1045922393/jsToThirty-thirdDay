@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>旋转木马轮播图</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        ul {
+            list-style: none
+        }
+
+        img {
+            border: 0;
+            vertical-align: top;
+        }
+
+        a,
+        button {
+            cursor: pointer;
+        }
+
+        .wrap {
+            width: 1200px;
+            margin: 100px auto;
+        }
+
+        .slide {
+            height: 500px;
+            position: relative;
+        }
+
+        .slide li {
+            position: absolute;
+            left: 200px;
+            top: 0;
+            transition: all 350ms;
+        }
+
+        .slide li img {
+            width: 100%;
+        }
+
+        .prev,
+        .next {
+            width: 76px;
+            height: 112px;
+            position: absolute;
+            top: 50%;
+            margin-top: -56px;
+            background: url(./images/prev.png) no-repeat;
+            z-index: 99;
+        }
+
+        .next {
+            right: 0;
+            background-image: url(./images/next.png);
+        }
+
+        .slide li.left1 {
+            width: 400px;
+            top: 20px;
+            left: 50px;
+            opacity: 0.2;
+            z-index: 2;
+        }
+
+        .slide li.left2 {
+            width: 600px;
+            top: 70px;
+            left: 0px;
+            opacity: 0.8;
+            z-index: 3;
+        }
+
+        .slide li.middle {
+            width: 800px;
+            top: 100px;
+            left: 200px;
+            opacity: 1;
+            z-index: 4;
+        }
+
+        .slide li.right2 {
+            width: 600px;
+            top: 70px;
+            left: 600px;
+            opacity: 0.8;
+            z-index: 3;
+        }
+
+        .slide li.right1 {
+            width: 400px;
+            top: 20px;
+            left: 750px;
+            opacity: 0.2;
+            z-index: 2;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap" id="wrap">
+        <div class="slide" id="slide">
+            <ul>
+                <li>
+                    <a href="#"><img src="images/slidepic1.jpg" alt="" /></a>
+                </li>
+                <li>
+                    <a href="#"><img src="images/slidepic2.jpg" alt="" /></a>
+                </li>
+                <li>
+                    <a href="#"><img src="images/slidepic3.jpg" alt="" /></a>
+                </li>
+                <li>
+                    <a href="#"><img src="images/slidepic4.jpg" alt="" /></a>
+                </li>
+                <li>
+                    <a href="#"><img src="images/slidepic5.jpg" alt="" /></a>
+                </li>
+            </ul>
+            <div class="arrow" id="arrow">
+                <a href="javascript:;" class="prev" id="arrLeft"></a>
+                <a href="javascript:;" class="next" id="arrRight"></a>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    window.onload = function () {
+        let arr = ['left1', 'left2', 'middle', 'right2', 'right1'];
+        let liList = document.querySelectorAll('#slide li');
+        liList.forEach((val, ind) => {
+            val.classList.add(arr[ind]);
+        })
+        let btnLeft = document.querySelector('#arrLeft');
+        let btnRight = document.querySelector('#arrRight');
+        btnLeft.onclick = () => {
+            liList.forEach((val, ind) => {
+                val.classList.remove(arr[ind]);
+            })
+            let first = arr.pop();
+            arr.unshift(first);
+            liList.forEach((val, ind) => {
+                val.classList.add(arr[ind]);
+            })
+        }
+        btnRight.onclick = () => {
+            liList.forEach((val, ind) => {
+                val.classList.remove(arr[ind]);
+            })
+            let first = arr.shift();
+            arr.push(first);
+            liList.forEach((val, ind) => {
+                val.classList.add(arr[ind]);
+            })
+        }
+    }
+</script>
+<!-- <script>
+    /*
+      效果：
+        1.刷新页面的时候，五张图片从中间散开到达他们各自应该在的位置
+        2.点击右边按钮
+            图片形成一个逆时针位移
+        3.点击左边按钮
+            图片形成一个顺时针旋转效果
+    */
+    // 实现刷新页面的时候，把图片从中间展开的效果
+    /*
+      我们一开始定义了5个类名，分别表示5张图片的位置，一开始只要遍历所有的图片，把对应的位置，设置给他们就可以了
+    
+      步骤：
+        1.获取所有的图片的li
+        2. 使用一个数组把所有的类名存储起来，使我们可以遍历使用
+        3. 遍历地设置类名
+    */
+    // 把所有的类名，使用一个数组先保存起来
+    let classNames = ['left1', 'left2', 'middle', 'right2', 'right1'];
+    window.onload = function () {
+        let lis = document.querySelectorAll('.slide li');
+        // 遍历的设置每个li的类名
+        lis.forEach((e, i) => {
+            e.className = classNames[i];
+        });
+
+        // 点击左右按钮
+        /*
+          先点击右按钮
+            1.获取按钮
+            2.注册点击事件
+            3.
+        */
+        let btnRight = document.querySelector('#arrRight');
+        btnRight.onclick = function () {
+            // 想要实现逆时针旋转，非常简单，只要把li的类名重新按照一个新的数字的顺序设置一下
+            // 先把类名的数组的第一个取出来
+            let first = classNames.shift();
+            // 再把类名从数组的末尾放进去
+            classNames.push(first);
+            // console.log(classNames);
+            // 再次按照操作了的数组的顺序把每张图片重新排序
+            lis.forEach((e, i) => {
+                e.className = classNames[i];
+            })
+        }
+
+        // 左边按钮
+        let btnLeft = document.querySelector('#arrLeft');
+        btnLeft.onclick = function () {
+            // 把数组的最后一个类名取出来
+            let last = classNames.pop();
+            // 把最后一个放到最前面
+            classNames.unshift(last);
+            // 再次排序
+            lis.forEach((e, i) => {
+                e.className = classNames[i];
+            })
+        }
+    }
+</script> -->
+
+</html>

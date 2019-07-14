@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>基本属性操作</title>
+</head>
+<body>
+    <h1 title="我是h1特大标签">我是h1特大标签</h1>
+    <h2 title="我是h2大标签">我是h2大标签</h2>
+    <h3 title="我是h2中标签">我是h3中标签</h3>
+    <h4 title="我是h4小标签">我是h4小标签</h4>
+</body>
+<script>
+    var hfirst = document.getElementsByTagName('h1');
+    console.log(hfirst[0].title);
+    hfirst[0].title = '我是修改后的h1';
+    console.log(hfirst[0].title);
+    var hsecond = document.getElementsByTagName('h2');
+    console.log(hsecond[0].title);
+    hsecond[0].title = '我是修改后的h2';
+    hsecond[0].style.color = 'pink';
+    hsecond[0].style.backgroundColor  = 'yellow';
+    console.log(hsecond[0].title);
+    var hthird = document.getElementsByTagName('h3');
+    console.log(hthird[0].title);
+   var hforth = document.getElementsByTagName('h4');
+   hforth[0].style.fontSize = '50px';
+   hforth[0].style.lineHeight = '60px';
+   console.log(hforth[0]);
+</script>
+</html>

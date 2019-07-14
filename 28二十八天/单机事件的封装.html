@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+</body>
+<script>
+    tag(document.querySelector('div'))
+    function tag(target, callback, delay, offset) {
+        delay = delay || 200;
+        offset = offset || 50;
+        target.addEventListener('touchstart', touching);
+        let beginTime;
+        let beginPageX;
+        let beginPageY;
+        function touching(e) {
+            if (e.touches.length != 1) {
+                console.log('不是单点');
+                return;
+            }
+            beginTime = Date.now();
+            beginPageX = e.touches[0].pageX;
+            beginPageY = e.touches[0].pageY;
+            // console.log(beginTime);
+            // console.log(beginPageX);
+            // console.log(beginPageY);
+        }
+        target.addEventListener('touchend', touched);
+        function touched(e) {
+            if (e.changedTouches.length != 1) {
+                console.log('不是单点');
+                return;
+            }
+            if (Date.now() - beginTime > delay) {
+                console.log('点击太久');
+                return;
+            }
+            if (Math.abs(e.changedTouches[0].pageX - beginPageX) > offset || Math.abs(e.changedTouches[0].pageY - beginPageY) > offset) {
+                console.log('偏差太大');
+                return;
+            }
+            // console.log('okok');
+            callback && callback();
+        }
+    }
+</script>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>addElementListener</title>
+    <style>
+        div{
+            width: 50px;
+            height: 50px;
+            background-color: yellow;
+        }
+        .name{
+            transform:translateX(30px);
+        }
+        .gender{
+            transform:translateY(30px) translateX(30px); /*多个transform用空格隔开*/
+        }
+    </style>
+</head>
+<body>
+    <div class="ii"></div>
+</body>
+<script>
+    document.querySelector('.ii').addEventListener('click',function(){
+        document.querySelector('.ii').classList.add('name');
+    })
+    document.querySelector('.ii').addEventListener('click',function(){
+        document.querySelector('.ii').classList.add('gender');
+    })
+</script>
+</html>

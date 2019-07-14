@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        table{
+            width: 800px;
+            margin: 50px auto;
+            text-align: center;
+            border-collapse: collapse;
+            color: #333;
+        }
+        thead {
+            background-color: skyblue;
+            color: #fff;
+        }
+        th {
+            border: 1px solid #999;;
+        }
+        td {
+            border: 1px solid #999;
+        }
+    </style>
+</head>
+<body>
+    <table cellspacing="0">
+        <thead>
+            <tr>
+                <th><input type="checkbox" name = "sel" id = "cb0">全选/全不选</th>
+                <th>菜名</th>
+                <th>商家</th>
+                <th>价格</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <input type="checkbox" name = "sel" id = "cb1">
+                    
+                </td>
+                <td>红烧肉</td>
+                <td>隆江猪脚饭</td>
+                <td>￥200</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name = "sel" id = "cb1"></td>
+                <td>香酥排骨</td>
+                <td>隆江猪脚饭	</td>
+                <td>￥998</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name = "sel" id = "cb1"></td>
+                <td>北京烤鸭</td>
+                <td>隆江猪脚饭	</td>
+                <td>￥88</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+<script>
+    //  document.getElementById("check1").checked=true
+    var btn = document.getElementsByTagName('input');   //获得按钮input的对象
+    
+    
+    for (let n = 0;n<btn.length;n++){       //      遍历按钮
+        btn[n].onclick=function(){          //      每个按钮点击一次都进行一次定
+            let test = 1;                       //  声明测试变量来判断是否全选
+            for (let i = 1; i<btn.length;i++){      //  如果有一个按钮没被选中，则改变测试变量的值
+                if(btn[i].checked==false){          
+                    test = 0;               
+                    
+                }
+
+            }
+            if(test ==0){                   //判断是否有改变测试变量的值
+                btn[0].checked= false;          //有按钮没有选中，全选按钮取消选中
+            }else{
+                btn[0].checked = true;          //全部按钮都选中了，然后全选按钮也自动选中
+            }
+        }
+    }
+    btn[0].onclick = function(){            //给全选按钮声明函数
+        if(btn[0].checked==true){                   //全选按钮选中了
+            for(let i = 1;i<btn.length;i++){                //其余都被选中
+                btn[i].checked = true;
+
+            } 
+            
+        }else {
+            for(let i = 1;i<btn.length;i++){        //全选按钮取消了
+                btn[i].checked = false;         //其余按钮也取消
+
+            }   
+        }
+    }
+    
+   
+</script>
+</html>

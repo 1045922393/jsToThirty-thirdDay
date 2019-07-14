@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>斐波那契数列</title>
+</head>
+<body>
+   <script>
+   
+
+    function destiny(j){
+        var arr=[];
+        var i;
+        arr[1]= 1;
+        arr[2]= 1;
+        if (j===1||j===2) {
+            return 1;
+        }
+        else{
+            for (i=3;i<=j;i++){
+                arr[i] = arr[i-1]+arr[i-2];
+            }
+            return arr[i-1];
+        }
+        
+    }
+    var j=parseInt(prompt('请输入想要得月份'));
+    document.write('第'+j+'个月有'+destiny(j)+'只兔子');
+    console.log(typeof(destiny(j)));
+   </script>
+</body>
+</html>

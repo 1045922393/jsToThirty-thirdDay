@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" id="switchOO" value="on"></input>
+</body>
+<script>
+    //正常的改样式
+    
+    let bGC = document.body;
+    let btn = document.getElementById('switchOO');
+    btn.onclick = switchFF;
+    function switchFF(){
+        if(btn.value=="on"){
+            bGC.style.backgroundColor = 'black';
+            btn.value="off"
+        }else {
+            bGC.style.backgroundColor = "yellow";
+            btn.value = "on";
+        }
+    }
+</script>
+</html>

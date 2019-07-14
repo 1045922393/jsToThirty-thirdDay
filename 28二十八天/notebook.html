@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <pre>
+    触摸事件
+    触摸开始    touchstart
+    触摸移动    touchmove
+    触摸接触    touchend
+        建议用addEventListener来注册事件
+    
+    触摸事件的三个触摸点
+    e.touches 屏幕上的触摸点
+    e.targetTouches
+    e.changedTouches
+    
+    在事件touchstart和touchmove单点操作    三个触摸点一样
+    在事件touchend单点操作 只有 changedTouches 有数据
+
+    移动端类库--别人封装好的代码
+    zepto
+    src='引入'
+    获取元素
+    $(选择器);  //这个方法得到的元素是一个伪数组，如果用zepto的类库不用索引直接对数组操作
+    注册事件
+    zepto对象.on(事件类型,行为) 
+
+    如果要注册tap或者swipe事件，需要先引入zepto.js，再引入第二个js文件(模块)touch.js,
+</pre>
+</body>
+<script></script>
+
+</html>

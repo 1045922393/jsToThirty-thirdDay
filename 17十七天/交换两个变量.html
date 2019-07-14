@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+        
+    
+</body>
+<script>
+    var a =24;
+    var b =42;
+    a = b -a ;//a和b之间的距离，存在a处
+    b = b -a ;//a到原点的距离，存在b处
+    a = b +a ;//现在b到原点的距离就是原来a到原点的距离，现在加个两者之间的距离便实现了a得到b原来的距离
+    // console.log (a,b);
+</script>
+<script>
+    //位运算异或法
+    var c = 24;
+    var d = 42;
+    c= c^d;
+    d= c^d;
+    c= c^d;
+    // console.log(c,d);
+</script>
+
+<script>
+    // 中点法
+    var e = 54 ;
+    var f = 22 ;
+    e = (e + f)/2;
+    f = f - e;
+    f = e - f;
+    e = e - f;
+    e = 2*e+ f;
+    // console.log (e,f);
+</script>
+
+<script>
+    var x=55,y=73;
+    x=(x+y)/2;
+    y=x -y;
+    x=x-y;
+    y=x+2*y;
+    // document.write(x+' '+y);
+</script>
+
+<script>
+    
+    var x=22,y=13;
+    x= x+ y;//22+13=35
+    y= x-y;//35-13=22
+    x=x-y;//35-22=13
+    // document.write(x+' '+y);
+</script>
+
+</html>

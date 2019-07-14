@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class= "safd asdfd sadfad">12</div>
+    <div id="sadsad">3</div>
+    <div name ="dsaf">4</div>
+    <div type="dsad">5</div>
+    <div href="sff">6</div>
+    <span>23</span>
+    <span>23</span>
+    <span>23</span>
+</body>
+<script>
+    // NodeList 
+    var arr = document.querySelectorAll('div'); //NodeList
+    var a = document.querySelector('div'); //NodeList
+    var crr = document.getElementsByTagName('div'); //HTMLCollection
+    var brr = document.querySelectorAll('span');
+    console.dir(arr);
+    console.dir(a); 
+    console.log(crr);
+    console.log(arr^brr);  //   0
+       console.log(arr+brr);// [object NodeList][object NodeList]
+       //[object NodeList] 里面显示的子元素名字用   交集选择器  的规则  暂时只发现有id和class 多个class全部显示 div.safd.asdfd.sadfad
+</script>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <label for="test-text">
+        <input type="text" id="test-text" placeholder="请输入">
+        <input type="button" value="push" id="test-push">
+    </label>
+    <ul id="testUl">
+    </ul>
+</body>
+<script src="./jquery-2.2.2.js"></script>
+<script src="./封装日期.js"></script>
+<script src="./获得随机ID根据时间.js"></script>
+<script>
+    let testVal;
+    let oldTestData = localStorage.getItem('test');     //获取本地数据
+    let testArr = JSON.parse(oldTestData) || [];       //定义个数组来保存数据,如果原来有数据就保存原来数据,如果没有,给个空数组
+
+    testArr.forEach((val, ind) => {
+        $('#testUl').prepend($(`<li>${val.testValue}</li>`))       //此时对象的名字变成了数组加索引
+    })
+    $('#test-text').on('blur', function () {
+        testVal = $('#test-text').val();
+        // console.log(testVal);
+    })
+    $('#test-push').on('click', function () {
+        $('#test-text').blur();
+
+        let testObj = {
+            testValue: testVal,
+            testDate: getTime(),
+            testId: randomID()
+        };
+        $('#testUl').prepend($(`<li>${testObj.testValue}</li>`))
+        testArr.push(testObj);          //将新获得的对象当做数组元素加进数组
+        let pushInLocal = JSON.stringify(testArr);      //数据转为JSON
+        localStorage.setItem('test', pushInLocal)      //本地数据更新
+        testVal = $('#test-text').val('');
+    })
+</script>
+
+</html>

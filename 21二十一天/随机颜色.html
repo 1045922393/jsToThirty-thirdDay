@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>randomColor</title>
+</head>
+
+<body>
+    <button id = "randomC">随机背景颜色</button>
+</body>
+<script>
+    function ztotff(n, m) {
+        // var a = Math.random()*256;
+        var a = Math.random() * (m - n + 1) + n;
+        a = Math.floor(a);
+        return a;
+    }
+    function randomColor() {
+        var r = ztotff(0, 255);
+        var g = ztotff(0, 255);
+        var b = ztotff(0, 255);
+        var color = 'rgb(' + r + ',' + b + ',' + b + ')';
+        // console.log(color);
+        return color;
+    }
+    var btn = document.getElementById('randomC');
+    console.log(btn);
+    btn.onclick = function(){
+        document.body.style.backgroundColor = randomColor();
+        console.log(randomColor())
+    }
+</script>
+
+</html>

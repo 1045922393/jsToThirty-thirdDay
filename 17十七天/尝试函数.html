@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>尝试函数</title>
+</head>
+<body>
+   <script>
+   //封装函数
+    // var arr=[];
+        // if(i===1||i===2){
+        //     document.write(1);
+        // }else {
+        //     for(i=3;i<=12;i++){
+        //     arr[i]=arr[i-1]+arr[i-2];
+        //     document.write(arr[i]+' ');
+        // }
+        //以上代码有问题，等学会函数回来调整
+    // function destiny() {
+    //    document.write('我的第一个函数');
+    // }
+
+    
+    // destiny();
+    // function fn(){
+    // console.log(arguments);
+    // }
+    // fn(1); // 输出 [1]
+    // fn(1,2) // 输出 [1,2]
+    // fn(1,2,3,4,5) // 输出 [1,2,3,4,5]
+
+    function destiny(j){
+        var arr=[];
+        var i;
+        arr[1]= 1;
+        arr[2]= 1;
+        if (j===1||j===2) {
+            return 1;
+        }
+        else{
+            for (i=3;i<=j;i++){
+                arr[i] = arr[i-1]+arr[i-2];
+            }
+            return arr[i-1];
+        }
+        
+    }
+    var j=12;
+    document.write('第'+j+'个月有'+destiny(j)+'只兔子');
+    console.log(typeof(destiny(j)));
+   </script>
+</body>
+</html>

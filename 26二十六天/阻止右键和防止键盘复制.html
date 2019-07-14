@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../拓展资料//MyTools/禁止选中及禁止右键及禁止ctrlC.js"></script>
+</head>
+
+<body>
+    <p>不允许复制</p>
+    <script>
+        //三个禁止复制的方法 1、禁止右键 2、禁止选择 3、禁止键盘复制
+        // document.oncontextmenu = function (e) {
+        //     e.preventDefault();
+        // }
+        // document.body.style = 'user-select: none;';
+        // document.body.setAttribute('style', 'user-select:none;');
+        // // style.appendChild(document.createTextNode(code));
+        // let banSelect = document.createElement('style');
+        // banSelect.innerHTML = 'body{user-select:none;}';
+
+        // document.getElementsByTagName('head')[0].appendChild(banSelect);
+        // document.onkeydown = function (e) {
+        //     if (e.ctrlKey && e.keyCode == '67') {
+        //         e.preventDefault();
+        //     }
+        // }
+        function banCopy() {
+            document.addEventListener('contextmenu', (e) => { e.preventDefault() });
+            let banSelect = document.createElement('style');
+            banSelect.innerHTML = 'body{user-select:none;}';
+            document.getElementsByTagName('head')[0].appendChild(banSelect);
+            document.addEventListener('keydown', banCtrlC);
+            function banCtrlC(e) {
+                if (e.ctrlKey && e.keyCode == '67') e.preventDefault();
+            }
+        }
+        banCopy();
+    </script>
+</body>
+
+</html>

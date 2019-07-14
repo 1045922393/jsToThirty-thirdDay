@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .mp {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="one">
+        <li class="one1one">我是第1个</li>
+        <li class="one2one">我是第2个</li>
+        <li class="one3one">我是第3个</li>
+        <li class="one4one">我是第4个</li>
+        <li class="one5one">我是第5个
+            <div class="two5two">我是第5个
+                <div class="two5two">我是第5个</div>
+            </div>
+        </li>
+    </ul>
+
+    <ul class="two">
+        <li class="two1two">我是第1个</li>
+        <li class="two2two">我是第2个</li>
+        <li class="two3two">我是第3个</li>
+        <li class="two4two">我是第4个</li>
+        <li class="two5two">我是第5个</li>
+    </ul>
+
+</body>
+<script>
+    let ulone = document.querySelector('.one');
+    let uloneclone = document.querySelector('.one').cloneNode(true);
+    let ultwo = document.getElementsByClassName('two')[0];
+    console.log(ulone);
+    console.log(ultwo);
+    let newCreate = document.createElement('img');
+    newCreate.setAttribute('src', '../01林允儿.png');
+    newCreate.setAttribute('width', '200');
+    ulone.children[0].appendChild(newCreate);
+    // console.log(document.all);
+    // for(let i = 0;i<document.all.length;i++){
+    //     document.all[i].classList.add('mp');        //加类名
+    // }
+    // ultwo.appendChild(ulone);
+    // ulone.insertBefore(uloneclone,document.querySelector('.one2one'));   //父节点.insertBefore(要加的节点,子节点的元素)
+    ultwo.insertBefore(ulone, document.querySelector('.two2two'));   //父节点.insertBefore(要加的节点,原来就有子节点的元素表示要加的位置)
+</script>
+
+</html>

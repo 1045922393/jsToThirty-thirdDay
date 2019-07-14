@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        (function getNumber(){
+            console.log(11);
+        })();
+        function getNumber(){
+            console.log(12);
+        }
+        getNumber();//自调用函数如果使用了非匿名函数，也被无法调用
+    </script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 3000px;
+        }
+
+        .box {
+            width: 450px;
+            height: 450px;
+            border: 1px solid #aaa;
+            position: relative;
+            top: 100px;
+            left: 100px;
+        }
+
+        .small {
+            width: 450px;
+            height: 450px;
+            position: absolute;
+        }
+
+        .mask {
+            position: absolute;
+            background-color: rgba(255, 255, 0, .3);
+            width: 225px;
+            height: 225px;
+            top: 0;
+            left: 0;
+            display: none;
+        }
+
+        .big {
+            width: 450px;
+            height: 450px;
+            border: 1px solid #aaa;
+            position: absolute;
+            left: 500px;
+            top: 0;
+            overflow: hidden;
+            display: none;
+        }
+
+        .big>img {
+            width: 900px;
+            height: 900px;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="small">
+            <img src="./images/s.jpg" alt="">
+            <div class="mask"></div>
+        </div>
+        <div class="big">
+            <img src="./images/big.jpg" alt="">
+        </div>
+    </div>
+</body>
+<script>
+    window.onload = () => {
+        let smallBox = document.querySelector('.small');
+        let moveMask = document.querySelector('.mask');
+        let bigBox = document.querySelector('.big');
+        let bigImg = document.querySelector('.big img');
+        smallBox.addEventListener('mouseover', showOut);
+        function showOut() {
+            moveMask.style.display = 'block';
+            bigBox.style.display = 'block';
+        }
+        smallBox.addEventListener('mouseout', hiddenOut);
+        function hiddenOut() {
+            moveMask.style.display = 'none';
+            bigBox.style.display = 'none';
+        }
+        smallBox.addEventListener('mousemove', movingMask);
+        function movingMask(e) {
+            let maskX = e.pageX - smallBox.parentNode.offsetLeft - (moveMask.offsetWidth / 2);
+            let maskY = e.pageY - smallBox.parentNode.offsetTop - (moveMask.offsetHeight / 2);
+            let maskXMax = smallBox.clientWidth - moveMask.clientWidth;
+            let maskYMax = smallBox.clientWidth - moveMask.clientHeight;
+            // console.log(maskYMax);
+            maskX = maskX <= 0 ? 0 : maskX;
+            maskY = maskY <= 0 ? 0 : maskY;
+            maskX = maskX >= maskXMax ? maskXMax : maskX;
+            maskY = maskY >= maskYMax ? maskYMax : maskY;
+            moveMask.style.left = maskX + 'px';
+            moveMask.style.top = maskY + 'px';
+            // console.log(smallBox.offsetLeft)
+            let bigXMax = bigImg.clientWidth - bigBox.clientWidth;
+            let bigYMax = bigImg.clientHeight - bigBox.clientHeight;
+            // console.log(bigYMax);
+            bigImg.style.left = -(bigXMax * maskX / maskXMax) + 'px';
+            bigImg.style.top = -(bigYMax * maskY / maskYMax) + 'px';
+            //大图显示位置 =  -1*（大图最大位置*小图的显示位置/小图的最大位置)
+        }
+
+    }
+</script>
+<!-- <script>
+    /*
+      效果：
+        1.鼠标移入 小图区域 ，小图区域出现一个黄色 遮罩 ，出现大图区域
+        2.鼠标移出 小图区域 ， 遮罩和大图区域消失
+        3.鼠标在 小图区域 移动，
+            遮罩跟着移动
+            大图会展示遮罩挡住的部分
+    */
+    // 鼠标的移入移出，让遮罩和大图区域的显示和隐藏
+    /*
+      1.获取元素
+      2.注册事件(鼠标移入，鼠标移出)
+      3.鼠标移入，就找到遮罩和大图，display设置为block，鼠标移出，把大图和遮罩的display设置为none
+    */
+    // 获取元素
+    let small = document.querySelector('.small');
+    let mask = document.querySelector('.mask');
+    let big = document.querySelector('.big');
+    let box = document.querySelector('.box');
+    // 鼠标移入
+    small.onmouseover = function () {
+        // display设置为block
+        mask.style.display = 'block';
+        big.style.display = 'block';
+    }
+    // 鼠标移出
+    small.onmouseout = function () {
+        // display设置为none
+        mask.style.display = 'none';
+        big.style.display = 'none';
+    }
+
+    // 实现鼠标的移动
+    // 注册鼠标的移动事件
+    small.onmousemove = function (e) {
+        // 1 实现黄色遮罩随着鼠标移动
+        // 通过画图推导出 ： 遮罩的位置 = 鼠标位置 - small距离页面左上角的位置 - 遮罩宽高的一半
+        // 1.1 鼠标位置
+        let x = e.pageX;
+        let y = e.pageY;
+        // 1.2 small距离页面左上角的距离 - 发现small和box是重叠的，并且box已经做了定位，small无论如何它的位移都是0 了，我们使用box的位置 代替small的位置
+        // console.log(small.offsetParent);
+        // 得到box的位置
+        let offsetLeft = box.offsetLeft;
+        let offsetTop = box.offsetTop;
+        // 1.3 遮罩宽高的一半
+        let halfWidth = mask.offsetWidth / 2;
+        let halfHeight = mask.offsetHeight / 2;
+        // 1.4 算出遮罩的位置
+        let maskX = x - offsetLeft - halfWidth;
+        let maskY = y - offsetTop - halfHeight;
+        // 1.5 约束遮罩的移动的位置
+        // 最小值 0
+        // if(maskX < 0){
+        //   maskX = 0;
+        // }
+        maskX = maskX < 0 ? 0 : maskX;
+        maskY = maskY < 0 ? 0 : maskY;
+        // 最大值 = small的宽高 - 遮罩的宽高
+        let zuidaX = small.offsetWidth - mask.offsetWidth;
+        let zuidaY = small.offsetHeight - mask.offsetHeight;
+        maskX = maskX > zuidaX ? zuidaX : maskX;
+        maskY = maskY > zuidaY ? zuidaY : maskY;
+        // 1.6 把位置设置给遮罩
+        mask.style.top = maskY + 'px';
+        mask.style.left = maskX + 'px';
+    }
+</script> -->
+
+</html>

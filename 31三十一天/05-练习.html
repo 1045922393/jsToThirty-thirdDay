@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function Yhi(a, b, c, d) {      //定义函数
+        this.name = a;              //定义函数的属性
+        this.age = b;
+        this.gender = c;
+        this.height = d;
+        this.wan = function () {     //定义函数的方法
+            console.log('谢谢你的出现');
+        }
+    }
+    var hwy = new Yhi('aa', 'bb', 'cc', 'dd'); //调用函数，Yhi是函数名，同时也是自定义对象类型,而hwy是对象名
+    console.log(hwy.name);  //输出hwy对象的属性
+    hwy.wan();         //输出hwy对象的方法
+    console.log(hwy);
+    console.log(typeof (Yhi));
+</script>
+
+</html>

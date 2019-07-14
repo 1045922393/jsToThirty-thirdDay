@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var sun ={};
+        // var sun = new Object();
+        console.log(sun);
+        sun.name = '太阳';
+        sun.size = '1235456千米';
+        sun.old = '56446年';
+        sun.way = function (a){
+            console.log('地球围绕着我转'+a);
+        }
+        for(var all in sun){
+            console.log(sun[all]);
+        }
+        sun.way('寂寞的季节');
+    </script>
+    <script>
+        var moon = {
+            name:'月亮',
+            size:'1235千米',
+            old: '456年',
+            way:function(a,b,c,d){
+                var sum=a+b+c+d;
+                return sum;
+            }
+        }
+        for(var bll in moon){
+            console.log(moon[bll]);
+        }
+        console.log(moon.way(11,11,11,11));
+    </script>
+
+</body>
+</html>

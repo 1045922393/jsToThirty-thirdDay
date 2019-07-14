@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+        Number()
+        String()
+   </pre>
+</body>
+<script src="./jquery-2.2.2.js"></script>
+<script>
+    let cc = (`回忆如酒灯如豆,共鸣的人,怅惘的心,一段段模糊又清晰的记忆,一个个陌生又熟悉的姓名,总会让我在夜深人静的时候泪流满襟`);
+    // console.log(isNaN(parseInt(cc))) 
+    // prompt
+    let a = '11100000111000';
+    let b = new Number();   //
+    console.log(a.indexOf('0'));
+    // console.log(b - a)
+    let c = {
+        age: 8,
+    };
+    c.name = '我是c';
+    // console.log(c['age'])
+    // b.big
+    // console.log(b)
+
+    // $('pre').append(document.createElement('pre').innerText = '111');
+    // switch (a) {
+    //     case 1110:
+    //         console.log('第一个条件成立');
+    //         break;
+    //     case '1110':
+    //         console.log('第二个条件成立');
+    //         break;
+    //     default:
+    //         console.log('所有条件不成立');
+    //         break;
+    // }
+    let arr = [42, 8, 3, 6, 88, 37, 61];
+    function ftn(b, a) {
+        // console.log(b);
+        return a - b;
+    }
+    let brr = arr.sort(ftn);
+    let strl = document.createElement('span')
+    $('pre').append($(strl).text('keyibu'))
+    // console.log(brr)
+</script>
+
+</html>

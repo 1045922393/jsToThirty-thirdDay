@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <pre>
+        数组.find(funciton(){return 条件})        //返回满足条件的第一个元素                  
+        jq对象.find(子代css选择器)          //跟jq对象.children('选择器'),只找子代元素       差不多,向后代节点找目标
+    
+        js中方法
+        confirm();
+        弹框:点击确定函数返回true,否则返回false
+
+        数组.indexOf(元素)          //返回满足实参的元素在数组中的索引
+
+        数组.findIndex(function(){return 条件}) //返回满足条件的元素索引,如果没有就返回-1
+
+        品优购的知识点小结:
+            1\数组的遍历,生成html结构累加,循环过后使用结果
+            2\利用地址栏携带信息?id 在使用 location.search属性获得地址栏?后面内容
+            3\利用js数据方法       数组.find(function(){return 条件})   获得满足条件的对象,ps:此时改变对象的属性或者方法也会改变数组,因为引用类型赋值是赋予存储地址.
+            4\使用jq对象.val()获得的是字符串,注意要转化为数字
+            5\使用本地存储库保存购物车信息  localStorage.setItem('','')    JSON.stringify()    localStorage.getItem('')    JSON.parse()
+            6\读取本地数据库信息时利用短路运算  arr = JSON.stringify(localStorage.getItem(''))||[];
+            7\利用自定义属性存储data-id 来寻找操作的对象与本地库的对应
+            8\jq对象.each(i,e)来遍历jq的伪数组,索引是第一个参数,元素是第二个参数       js数组.forEach()来遍历js数组
+            9\$('input:checked')      可以得到被选中的jq对象数组
+            10\jq对象.text()    改变文本    jq对象.html()   改变结构
+            11\计算总结&数量%购物车小红点数量都封装成一个对象方法,每次进行改变都调用一次来实时更新
+            12\购物车点击加减号改变的是本地数据库的数据
+            13\点击删除按钮,弹框确认是否进行删除,调用jquery.ui.css和jquery.ui.js或者bootstrap都可以美化确认框,如果自己封装确认框时确保要有一个背景来覆盖后面按钮让其不被操作
+            14\注册事件,都用委托,将时间注册在静态页面已经存在的节点,然后子元素冒泡触发函数
+            15\js的方法     js数组.findIndex(function(){return 条件})          //返回的是一个满足条件的元素对应的索引,如果不存在,则返回-1   
+            16\使用``模板字符串引号
+            17\利用事件对象.preventDefault();   防止键盘输入
+            
+
+    </pre>
+</body>
+
+</html>

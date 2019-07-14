@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: black;
+    }
+
+    ul {
+        display: flex;
+        width: 300px;
+        flex-wrap: wrap;
+        height: 300px;
+    }
+
+    ul li {
+        width: 30%;
+        background-color: pink;
+        margin: 5px;
+        list-style: none;
+        text-align: center;
+        line-height: 90px;
+
+    }
+</style>
+
+<body>
+
+    <ul>
+        <li class="son">-2</li>
+        <li class="son">1</li>
+        <li class="son">-5</li>
+        <li class="son">2</li>
+        <li class="son">10</li>
+        <li class="son">2</li>
+        <li class="son">-5</li>
+        <li class="son">1</li>
+        <li class="son">-2</li>
+    </ul>
+    <button value="开始">开始</button>
+    <button value="停止">停止</button>
+    <button value="复原">复原</button>
+</body>
+<script src="./jquery.js"></script>
+<script>
+    $(function () {
+        let timeout;
+        let valuetext;
+        let isMe;
+        $('button').eq(0).on('click', function () {
+            let timeleave = Math.floor(Math.random() * 10000);
+            isMe = 1;
+            timeout = setInterval(function () {
+                let index = Math.floor(Math.random() * 10);
+                $('ul li').eq(index).css('opacity', '1').siblings().css('opacity', '0.3');
+                valuetext = $('ul li').eq(index).text();
+            }, 1)
+
+            setTimeout(function () {
+                clearInterval(timeout);
+                setTimeout(function () {
+                    if (isMe) {
+                        alert(valuetext);
+                        isMe = 0;
+                    }
+                }, 10)
+            }, timeleave)
+        })
+        $('button').eq(1).on('click', function () {
+            clearInterval(timeout);
+            setTimeout(function () {
+                if (isMe) {
+                    alert(valuetext);
+                    isMe = 0;
+                }
+            }, 10)
+
+        })
+        $('button').eq(2).on('click', function () {
+            $('ul li').css('opacity', '1');
+        })
+
+
+        // $('.son').on('mouseenter', function () {
+        //     $(this).css('opacity', '1').siblings().css('opacity', '0.3')
+        // })
+        // $('ul').on('mouseleave', function () {
+        //     $(this).children().css('opacity', '0.3')
+        // })
+    })
+</script>
+
+</html>

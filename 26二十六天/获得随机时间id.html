@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // let timestramp = new Date();
+    // console.log(timestramp.valueOf());
+    // console.log(timestramp.getTime());
+    // console.log(Date.now());
+    function randomID() {
+
+        function randomNM(n, m) {
+            return Math.floor(Math.random() * (m - n + 1) + n);
+        }
+        return new Date().getTime() + '' + randomNM(100000, 999999);
+    }
+
+    // console.log(randomID());
+</script>
+
+</html>

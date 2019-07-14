@@ -1,0 +1,199 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>微博发布效果</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .weibo {
+            width: 600px;
+            border: 1px solid #ccc;
+
+            margin: 100px auto;
+            padding: 10px;
+
+        }
+
+        .weibo-text {
+            width: 590px;
+            height: 140px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            outline: none;
+            resize: none;
+        }
+
+        .weibo-text:focus {
+            border-color: #f60;
+        }
+
+        .weibo-btn {
+            width: 80px;
+            height: 30px;
+            background-color: #f90;
+            color: #fff;
+            border: 0 none;
+            margin-top: 5px;
+            border-radius: 3px;
+            cursor: pointer;
+            outline: 0 none;
+        }
+
+        .weibo-list {
+            padding-top: 10px;
+        }
+
+        .weibo-list li {
+            font-size: 14px;
+            line-height: 30px;
+            border-bottom: 1px dotted #ccc;
+            overflow: hidden;
+        }
+
+        .weibo-list li p {
+            float: left;
+        }
+
+        .weibo-list li span {
+            float: right;
+            cursor: pointer;
+        }
+
+        .weibo-list li input {
+            height: 24px;
+            line-height: 24px;
+            width: 300px;
+            font-size: 14px;
+            border: 0 none;
+        }
+        .time {
+            margin-right: 10px;
+            font-style: normal;
+            float: right;
+        }
+    </style>    
+</head>
+
+<body>
+<div class="weibo">
+    <textarea class="weibo-text"></textarea>
+    <input class="weibo-btn" value="发布" type="button">
+    <ul class="weibo-list">
+        <li>
+            <p class="content">快来收了这九款用上就停不下来的应用吧！！</p> 
+            <span class="del">删除</span>
+            <span class="time">2019</span>
+        </li>
+    </ul>
+</div>
+</body>
+<script src="./kits.js"></script>
+<script>
+/*
+  效果分为4个
+    —— 把一个案例拆分称为多个小的功能，每个功能一点一点的完成，就把大的项目完成了
+    1. 在一开始加载页面的时候，会读取本地数据，根据本地数据生成li
+    2. 点击发布
+    3. ctrl + 回车发布
+    4. 点击删除
+*/
+
+// 因为如果不点击发布，是没有本地数据的，所以先作点击发布
+// 点击发布功能 
+//    会在页面上看到一个新的li，在本地数据里面，多一条数据
+/* 
+  步骤：
+    1.获取按钮
+    2.注册点击事件
+    3.新建li，添加到ul里面
+    4.把数据存储到本地存储里面
+*/
+let text = document.querySelector('.weibo-text');
+let ul = document.querySelector('.weibo-list');
+let btn = document.querySelector('.weibo-btn');
+
+// 有一个用于存储所有的发布的微博的数组
+// let wbArr = [];// 现在不能直接给一个空数组了，因为有可能已经有数据了，直接用空数组，添加新数据覆盖，会把旧的数据直接去掉了
+btn.onclick = function(){
+  // 获取文字
+  let content = text.value;
+  // 新建li
+  let li = document.createElement('li');
+  // 给li添加结构
+  let time = kits.formateDate();
+  li.innerHTML = '<p class="content">'+ content +'</p>'+
+            '<span class="del">删除</span>'+
+            '<span class="time">'+ time +'</span>';
+  // 把li 添加到ul里面
+  ul.insertBefore(li,ul.children[0]);
+  // 把文本域清空
+  text.value = '';
+  // 为了保证我们刷新之后，可以从localStorage里面读取出数据，动态生成li，需要把数据先存储到localStorage
+  // 以什么样的形式存 - 以对象的方式存储进去，需要存储的东西有： 内容+时间
+  // 我们需要把多条数据，以一个键的形式存储起来，就需要一个数组，先把所有的数据，先存储到，然后把数组存储到localStorage里面
+  let obj = {
+    content : content,
+    time : time
+  }
+  // console.log(obj);
+  // 把构建好的微博数据对象，添加到微博的数组里面
+  wbArr.push(obj);
+  // console.log(wbArr);
+  // 因为localStorage是不能存储字符串以外的数据的，先把数组转换为json格式的字符粗
+  let jsonStr = JSON.stringify(wbArr);
+  // console.log(jsonStr);
+  // 把这个数组，存储到localStorage里面
+  localStorage.setItem('wbData',jsonStr)
+}
+
+
+// 需要在一开始就读取出数据 - getItem
+/*
+  读取本地数据，生成li
+  1.先读取数据
+  2.先把读取出来的内容，转换为js里面的对象
+  3.遍历数组，生成多个li
+*/
+let jsonStr = localStorage.getItem('wbData');
+// console.log(jsonStr);
+// 判断，如果之前有数据，就读取，如果之前没有数据,就是null，就给一个空数组
+let wbArr;
+// if(jsonStr == null){
+//   wbArr = [];
+// }else {
+//   wbArr = JSON.parse(jsonStr);
+// }
+wbArr = JSON.parse(jsonStr)||[];
+// console.log(arr);
+let html = '';
+wbArr.forEach(e => {
+  // let li = document.createElement();
+  // li.innerHTML = '';
+  // ul.appendChild(li);
+  // 这么创建很麻烦
+  console.log(e); // e 是数组里面的每个元素
+  // 此时ul里面是没有内容的，我们就不存在覆盖的情况，最方便的方式是： innerHTML
+  html += '<li>'+
+            '<p class="content">'+ e.content +'</p>'+
+            '<span class="del">删除</span>'+
+            '<span class="time">'+ e.time +'</span>'+
+        '</li>';
+});
+// 把拼接好的html格式的字符串，放到ul的内部结构里面
+ul.innerHTML = html;
+
+/*
+  什么时候用哪一个
+  innerHTML
+    不存在是否覆盖，结构复杂
+  document.createElement
+    不能覆盖
+*/
+</script>
+</html>

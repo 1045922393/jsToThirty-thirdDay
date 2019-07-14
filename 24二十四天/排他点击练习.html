@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>排他</title>
+    <style>
+        .bgc{
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <button>4</button>
+    <button>5</button>
+</body>
+    <script>
+        let btn = document.querySelectorAll('button');
+        for(let i = 0;i<btn.length;i++){
+            btn[i].onclick =function(){
+                for(let n=0;n<btn.length;n++){
+                    if(btn[n].classList.contains('bgc')&&btn[n]!=this){
+                        btn[n].classList.remove('bgc');
+                    }
+                    
+                    
+                }
+            // if(btn[i].classList.contains('bgc')){
+            //     btn[i].classList.remove('bgc');
+
+            // }   else{
+            //     btn[i].classList.add('bgc');
+
+            // } 
+            this.classList.toggle('bgc');
+               
+                    
+               
+            }
+        }
+    </script>
+</html>

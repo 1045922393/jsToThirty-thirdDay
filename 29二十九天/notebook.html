@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <pre>
+        jQuery的入口函数的执行时机在DOM树加载完毕，为了保证我们获取元素是在元素生成之后
+        jQuery的顶级对象(jQ.uery===$)
+
+        $(css的选择器)  返回值     一个伪数组，jq对象
+       
+        注册事件
+        $('选择器').click(function(){})
+        jq对象.on('事件类型',处理程序)；
+
+        jq的修改样式
+            jq对象.css('属性名','属性值');  //字符串,属性名支持短线连接命名和驼峰命名，操作行内样式，返回值是调用该方法的jq对象（伪数组）
+                多个样式同时设置
+                    jq对象.css({
+                        属性名1:属性值1,
+                        属性名2:属性值2，
+                        '短杆拼接命名':属性值3,
+                        驼峰命名:属性值4
+                    })
+
+        获取jq的样式属性值
+            jq对象.css('属性名');   //相当于    window.getComputedStyle('属性名')   返回字符串类型css属性名对应的属性值
+
+        jq对象就是DOM对象的伪数组
+        jq对象[0]就是DOM对象
+        $(DOM对象)  //转换为jq对象
+
+        索引选择器
+        jq对象.eq(索引) //返回jq对象伪数组中对应索引的jq对象
+
+        js排他的兄弟选择器sibling()
+        $(this).css('属性名','属性值1').siblings().css('属性名','属性值2')；
+                    sibling('css的选择器')的筛选功能
+        
+        两个不会冒泡的鼠标事件
+        mouseenter  鼠标进入（不会冒泡）
+        mouseleave  鼠标离开（不会冒泡）
+        mouseover   鼠标悬停（会冒泡）
+        mouseout    鼠标移出（会冒泡）
+
+    事件与函数绑定，当子元素触发事件，冒泡给父元素，父元素也触发事件，当父元素触发事件后，给父元素绑定的事件函数执行
+
+
+        子元素选择器
+        jq对象.children('筛选选择器');
+
+        父元素选择器
+        jq对象.parent()
+
+        元素的显示与隐藏
+        show(持续时间,回调函数)
+        hide()
+
+        jq操作类名
+            添加类名
+                jq对象.addClass(多个类名);  //返回值是操作的那个jq对象
+            移除
+                jq对象.removeClass(多个类名);
+            切换
+                jq对象.toggleClass(多个类名);
+
+        获得对象在兄弟元素中的索引
+            jq对象.index();
+
+        获得对象在整个数组中的索引
+            jq对象.index(DOM对象)
+
+        jq中的链式编程，因为Jq中大多的方法返回的是jq对象，所以可以一直调用方法
+        jq对象.css('属性名')   //返回值是属性值，一个字符串
+        jq对象.index()          //返回值是一个数字
+
+        jq的动画
+        jq对象.animate({属性:属性值+},动画持续时间,动画结束的回调函数)；      //返回调用该方法的jq对象
+
+        slideUp(持续事件,回调函数)/slideDown()/slideToggle() //滑动
+
+        fadeIn()/fadeOut()/fadeToggle() //慢慢的以透明度的方式显示消失
+        jq对象.fadeTo(持续时间,目标透明度,回调)     //透明到某个程度
+    </pre>
+</body>
+
+</html>

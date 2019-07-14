@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>开关灯</title>
+    <script src="jquery.js"></script>
+</head>
+
+<body>
+    <div>
+        <button>灯开关</button>
+    </div>
+
+</body>
+<script>
+    $(function () {
+        $('button:nth-child(1)').click(function () {
+            if ($('body').css('backgroundColor') == 'rgb(0, 0, 0)') {
+                $('body').css('backgroundColor', 'rgb(255, 255, 255)');
+            } else {
+                $('body').css('backgroundColor', '#000');
+            }
+        })
+    })
+</script>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 500px;
+            height: 500px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+</body>
+<script>
+    let divBox = document.querySelector('div');
+    tag(divBox, function () { console.log(123) })
+    function tag(tatget, fun, delay, offset) {
+        delay = delay || 200;
+        offset = offset || 50;
+        let touchTime;
+        let touchPageX;
+        let touchPageY;
+        tatget.addEventListener('touchstart', function (e) {
+            if (e.touches.length != 1) {
+                return;
+            }
+            touchTime = Date.now();
+            touchPageX = e.touches[0].pageX;
+            touchPageY = e.touches[0].pageY;
+        })
+        tatget.addEventListener('touchend', function (e) {
+            if (e.changedTouches.length != 1) {
+                return;
+            }
+            let leaveTime = Date.now();
+            if (leaveTime - touchTime >= delay) {
+                console.log('触摸太久了');
+                return;
+            }
+            let leavePageX = e.changedTouches[0].pageX;
+            let leavePageY = e.changedTouches[0].pageY;
+            if (Math.abs(leavePageX - touchPageX) > offset || Math.abs(leavePageY - touchPageY) > offset) {
+                console.log('偏移太大');
+                return;
+            }
+            // console.log('success')
+            fun && fun();
+        })
+    }
+</script>
+
+</html>

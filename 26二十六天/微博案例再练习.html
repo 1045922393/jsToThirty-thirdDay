@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>微博发布效果</title>
+    <script>
+        //获得日期
+        function tenZero(number) {
+            if (number < 10) {
+                number = '0' + number;
+            }
+            return number;
+        }
+        function getTime() {
+            let dateAll = new Date();
+            let dates = new Object();
+            dates.year = dateAll.getFullYear();
+            dates.month = dateAll.getMonth() + 1;
+            dates.date = dateAll.getDate();
+            dates.hour = dateAll.getHours();
+            dates.minute = dateAll.getMinutes();
+            dates.second = dateAll.getSeconds();
+            dates.month = tenZero(dates.month);
+            dates.date = tenZero(dates.date);
+            dates.hour = tenZero(dates.hour);
+            dates.minute = tenZero(dates.minute);
+            dates.second = tenZero(dates.second);
+            dates.total = function () {
+                return (dates.year + '-' + dates.month + '-' + dates.date + ' ' + dates.hour + ':' + dates.minute + ':' + dates.second);
+
+            }
+            return dates.total();
+        }
+    </script>
+    <script>
+        //关于时间的随机id
+        function randomID() {
+            function randomNM(n, m) {
+                return Math.floor(Math.random() * (m - n + 1) + n);
+            }
+            return new Date().getTime() + '' + randomNM(100000, 999999);
+        }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .weibo {
+            width: 600px;
+            border: 1px solid #ccc;
+
+            margin: 100px auto;
+            padding: 10px;
+
+        }
+
+        .weibo-text {
+            width: 590px;
+            height: 140px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            outline: none;
+            resize: none;
+        }
+
+        .weibo-text:focus {
+            border-color: #f60;
+        }
+
+        .weibo-btn {
+            width: 80px;
+            height: 30px;
+            background-color: #f90;
+            color: #fff;
+            border: 0 none;
+            margin-top: 5px;
+            border-radius: 3px;
+            cursor: pointer;
+            outline: 0 none;
+        }
+
+        .weibo-list {
+            padding-top: 10px;
+        }
+
+        .weibo-list li {
+            font-size: 14px;
+            line-height: 30px;
+            border-bottom: 1px dotted #ccc;
+            overflow: hidden;
+        }
+
+        .weibo-list li p {
+            float: left;
+        }
+
+        .weibo-list li span {
+            float: right;
+            cursor: pointer;
+        }
+
+        .weibo-list li input {
+            height: 24px;
+            line-height: 24px;
+            width: 300px;
+            font-size: 14px;
+            border: 0 none;
+        }
+
+        .time {
+            margin-right: 10px;
+            font-style: normal;
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="weibo">
+        <textarea class="weibo-text"></textarea>
+        <input class="weibo-btn" value="发布" type="button" id="button">
+        <ul class="weibo-list">
+            <!-- <li>
+            <p class="content">快来收了这九款用上就停不下来的应用吧！！</p> 
+            <span class="del">删除</span>
+            <span class="time">2019</span>
+        </li> -->
+        </ul>
+    </div>
+</body>
+
+</html>
+
+<script>
+    // console.log(Boolean(' '));       测试结果   ''   是false   '   '   是 true
+    let areaText = document.querySelector('.weibo-text');
+    let turnUpBtn = document.querySelector('#button');
+    let ulText = document.querySelector('.weibo-list');
+    turnUpBtn.addEventListener('click', turnUp);
+    //点击事件如下
+    let localKeepArr = JSON.parse(localStorage.getItem('weibofirst')) || [];
+    function turnUp() {
+        let localKeep = {
+            contect: areaText.value.trim(),
+            upTime: getTime(),
+            upId: randomID()
+        }
+        if (Boolean(localKeep.contect)) {   //禁止输入空
+            // console.log(Boolean(localKeep.contect));
+            let contect = areaText.value;
+            let upTime = getTime();
+            let liText = document.createElement('li');
+            liText.innerHTML = '<p class="content">' + localKeep.contect + '</p><span class="del">删除</span><span class="time">' + localKeep.upTime + '</span>';
+            ulText.insertBefore(liText, ulText.children[0]);
+            liText.id = localKeep.upId;
+            localKeepArr.push(localKeep);
+            // console.log(JSON.stringify(localKeepArr));
+            localStorage.setItem('weibofirst', JSON.stringify(localKeepArr));
+            areaText.value = '';
+        }
+        //点击上交事件结束turnUp
+    }
+    //将本地存储数据显示到页面
+    let ulTextAll = '';
+    for (let i = localKeepArr.length - 1; i >= 0; i--) {
+        ulTextAll = ulTextAll + '<li id="' + localKeepArr[i].upId + '"><p class="content">' + localKeepArr[i].contect + '</p><span class="del">删除</span><span class="time">' + localKeepArr[i].upTime + '</span></li>';
+    }
+    ulText.innerHTML = ulTextAll;
+    //删除
+    ulText.addEventListener('click', dele);
+    function dele(e) {
+        if (e.target.className === 'del') {
+            ulText.removeChild(e.target.parentNode);
+            // let localKeepArr = JSON.parse(localStorage.getItem('weibofirst')) || [];
+            let clickId = e.target.parentNode.id;
+            localKeepArr.forEach((val, ind) => {
+                if (val.upId == clickId) {
+                    localKeepArr.splice(ind, 1);
+                    // console.log(localKeepArr);
+                    // JSON.stringify(localKeepArr);
+                    localStorage.setItem('weibofirst', JSON.stringify(localKeepArr));
+                }
+            })
+
+        }
+    }
+    //注册键盘发布事件
+    areaText.addEventListener('keydown', ctrlEnter);
+    function ctrlEnter(e) {
+        // console.log(e.keyCode);
+        if (e.ctrlKey && e.keyCode == 17) {
+            turnUp();
+        }
+    }    
+</script>

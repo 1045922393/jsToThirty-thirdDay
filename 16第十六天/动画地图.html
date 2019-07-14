@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #333;
+        }
+        div.box {
+            width: 750px;
+            margin: 10px auto;
+            position: relative;
+        }
+        .box>img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        .beijing {
+            position: absolute;
+            width: 50px;
+            top: 222px;
+            right: 222px;
+            color: #fff;
+        }
+        .areaName {
+            display: block;
+            width: 100%;
+            transform: translateX(70%);
+        }
+        .dingwei {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            width: 10px;
+            height: 10px;
+            background-color: #09f;
+            border-radius: 50%;
+        }
+        .circle1 {
+            position: absolute;
+            height: 10px;
+            width: 10px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            border: 1px solid #09f;
+            animation: displaying 2s linear infinite; 
+            animation-delay: 0.5s;
+            border-radius: 50%;
+            box-shadow: 0px 0px 15px 2px #09f;
+        }
+        .circle2 {
+            position: absolute;
+            height: 10px;
+            width: 10px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            border: 1px solid #09f;
+            box-shadow: 0px 0px 15px 2px #09f;
+            animation: displaying 2s linear infinite;
+            animation-delay: 1s;
+            
+            border-radius: 50%;
+        }
+        .circle3 {
+            position: absolute;
+            height: 10px;
+            width: 10px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            border: 1px solid #09f;
+            box-shadow: 0px 0px 15px 2px #09f;
+            animation: displaying 2s linear infinite;
+            animation-delay: 1.5s;
+            
+            border-radius: 50%;
+        }
+        .guangzhou {
+             position: absolute;
+            width: 50px;
+            top: 444px;
+            right: 444px;
+            color: #fff;
+        }
+        @keyframes displaying {
+            0% {
+                height: 10px;
+                width: 10px;
+                opacity: 0.5;
+            }
+            70% {
+                width: 70px;
+                height: 70px;
+                opacity: 0.5;
+            }
+            100% {
+                height: 80px;
+                width: 80px;
+                opacity: 0;
+            }
+
+        }
+    </style>
+</head>
+<body>
+    <div class="box">   
+        <img src="./map.png" alt="">
+        <div class="beijing">
+            <span class="areaName">北京</span>
+            <span class="dingwei"></span>
+            <span class="circle1"></span>
+            <span class="circle2"></span>
+            <span class="circle3"></span>
+            <span></span>
+        </div>
+        <div class="guangzhou">
+            <span class="areaName">广州</span>
+            <span class="dingwei"></span>
+            <span class="circle1"></span>
+            <span class="circle2"></span>
+            <span class="circle3"></span>
+            <span></span>
+        </div>
+       
+    </div>
+</body>
+</html>

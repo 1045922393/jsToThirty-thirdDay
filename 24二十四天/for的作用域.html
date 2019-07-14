@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+<script>
+    //每次循环的作用域不同
+    //let声明的变量在大作用域可以对其下的小作用域有效，但反过来不行
+    //let声明的变量只能在自己的作用域，不能跨到同级的其他作用域作用
+    //let声明与for循环会形成一个块作用域
+    for(let i = 1;i<=3;i++){
+        let nnn;
+        let ccc;
+        console.log('nnn'+nnn);
+        console.log('i'+i);
+        console.log('ccc'+ccc);
+
+        nnn = 3;
+        nnn = nnn+ i;
+        console.log('nnn'+nnn);
+        ccc =i;
+        console.log('ccc'+ccc);
+        for (let sss=ccc;sss<6;sss++){
+            console.log('ccc'+ccc)
+            ccc=ccc*2;
+            console.log('ccc'+ccc)
+        }
+    }
+    // console.log('i'+i);
+    // console.log('nnn'+nnn);
+
+</script>
+</html>

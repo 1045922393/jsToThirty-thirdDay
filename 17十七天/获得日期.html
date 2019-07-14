@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // var date = new Date();
+    // document.write(date);
+    // document.write('<hr>');
+    // var day = date.getDay();
+    // document.write(day);
+    // document.write('<hr>');
+    // var month = date.getMonth();
+    // document.write(month);
+    function tenZero(number){
+        if(number<10){
+            number = '0'+ number;
+        }
+        return number;
+    }
+    let dateAll = new Date();
+    let dates = new Object();
+    dates.year = dateAll.getFullYear();
+    dates.month = dateAll.getMonth()+1;
+    dates.date = dateAll.getDate();
+    dates.hour = dateAll.getHours();
+    dates.minute= dateAll.getMinutes();
+    dates.second = dateAll.getSeconds();
+    dates.month=tenZero(dates.month);
+    dates.date=tenZero(dates.date);
+    dates.hour=tenZero(dates.hour);
+    dates.minute=tenZero(dates.minute);
+    dates.second=tenZero(dates.second);
+    dates.total = dates.year+'-'+dates.month+'-'+dates.date+' '+dates.hour+':'+dates.minute+':'+dates.second;
+    console.log(dates.total);
+
+</script>
+</html>

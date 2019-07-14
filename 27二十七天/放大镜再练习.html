@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 450px;
+            height: 450px;
+            border: 1px solid #aaa;
+            position: relative;
+            top: 100px;
+            left: 100px;
+        }
+
+        .small {
+            width: 450px;
+            height: 450px;
+            position: absolute;
+        }
+
+        .mask {
+            position: absolute;
+            background-color: rgba(255, 255, 0, .3);
+            width: 225px;
+            height: 225px;
+            top: 0;
+            left: 0;
+            display: none;
+        }
+
+        .big {
+            width: 450px;
+            height: 450px;
+            border: 1px solid #aaa;
+            position: absolute;
+            left: 500px;
+            top: 0;
+            overflow: hidden;
+            display: none;
+        }
+
+        .big>img {
+            width: 900px;
+            height: 900px;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="small">
+            <img src="./images/s.jpg" alt="">
+            <div class="mask"></div>
+        </div>
+        <div class="big">
+            <img src="./images/big.jpg" alt="">
+        </div>
+    </div>
+</body>
+<script>
+    let smallBox = document.querySelector('.box');
+    let mask = document.querySelector('.mask');
+    let bigBox = document.querySelector('.big');
+    let bigImg = document.querySelector('.big img');
+    smallBox.onmouseover = () => {
+        mask.style.display = 'block';
+        bigBox.style.display = 'block';
+    }
+    smallBox.onmouseout = () => {
+        mask.style.display = 'none';
+        bigBox.style.display = 'none';
+    }
+    smallBox.onmousemove = (e) => {
+        let smallBoxWidth = smallBox.clientWidth;
+        let smallBoxHeight = smallBox.clientHeight;
+        let maskX = e.pageX - smallBox.offsetLeft - (mask.offsetWidth / 2);
+        let maskY = e.pageY - smallBox.offsetTop - (mask.offsetHeight / 2);
+        let maskXMax = smallBoxWidth - mask.clientWidth;
+        let maskYMax = smallBoxHeight - mask.clientHeight;
+        maskX = maskX <= 0 ? 0 : maskX;
+        maskX = maskX >= maskXMax ? maskXMax : maskX;
+        maskY = maskY <= 0 ? 0 : maskY;
+        maskY = maskY >= maskYMax ? maskYMax : maskY;
+        mask.style.left = maskX + 'px';
+        mask.style.top = maskY + 'px';
+        //大图显示 = 大图最大位置*小图显示位置/小图最大位置
+        let bigImgX = (bigImg.offsetWidth - bigBox.clientWidth) * maskX / maskXMax;
+        let bigImgY = (bigImg.offsetHeight - bigBox.clientHeight) * maskY / maskYMax;
+        bigImg.style.left = -bigImgX + 'px';
+        bigImg.style.top = -bigImgY + 'px';
+    }
+</script>
+
+</html>

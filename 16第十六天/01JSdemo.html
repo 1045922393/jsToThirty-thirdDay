@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=`, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /*article {
+            float: left;
+        }*/
+    </style>
+</head>
+<body>  06 16 19
+    <article>
+        《上午知识》
+        JS的用处
+        网页特效
+        服务端开发NODE.JS
+        命令行工具 同上
+        桌面程序 Electron
+        App cordova
+        控制硬件——物联网 RUFF
+        游戏开发 cocos2d.js
+
+        JS组成
+        ECMAScript
+        一套标准，描述语言的基本语法和数据类型
+        BOM
+        浏览器对象模型 弹出框、浏览器跳转、获取分辨率
+        DOM
+        文档对象模型 吧HTML看做文档树，通过DOM提供API可以对树上节点进行操作
+
+        API 应用编程接口=BOM+DOM+……
+
+        console 控制台
+    </article>
+    <article>
+        字符串是有长度的console.log(字符串.length);
+
+    </article>
+    <article>
+            null\
+            undefined;
+
+    </article>
+    <article>
+        多个字符排列在一起形成一个串的形状——字符串
+        1格式：单引号抱起来；
+        2转义字符，有时候在字符串中会用到跟语法有一定刚冲突的，用转义字符来搞定。
+        \' '     &nbsp; &nbsp; &nbsp;\" "
+        布尔类型boolean
+        true\false
+    </article>
+    <ul>
+        <li>string</li>
+        <li>number</li>
+        <li>boolean</li>
+        <li>null</li>
+        <li>undefined</li>
+    </ul>
+    <dl>
+        <dt>需求</dt>
+        <dd>让老板输入绩效工资 prompt</dd>
+        <dd>绩效工资和基础工资相加</dd>
+        <dd>页面上输出最终的工资  alert();</dd>
+        <dt>步骤</dt>
+        <dd>使用prompt输入绩效工资，使用一个变量存储起来</dd>
+        <dd>第一一个变量，先存储一个基本工资</dd>
+        <dd>把两个工资相加，算出最终工资</dd>
+        <dd>使用alert提示老板</dd>
+    </dl>
+    
+    <article>
+        类型转换：
+        Number();
+        NaN-not a number whose type is number
+        parseInt();//字符串转换为整形
+        parseFloat();//字符串转换为浮点型
+        转换机制 从左往右，直到遇到第一个非数字结束。
+        parse - 转换
+
+        string();任意类型转换为字符串
+        console.log((123).toString());
+        console.log(true.toString());
+        console.log(false.toString());//NULL和UNDEFINED不能用着方式转换为字符串。
+
+        转为BOOLEAN
+        false 0 '' null undefined NaN是false
+        其余都是true
+        Boolean(数据);//将任意类型转换为布尔类型
+
+        不同的数据类型之前输出用操作符"+"连接;
+
+        量的概念：
+        变量  var 变量名 =  值;
+        字面量 '123'   '字面量'
+        常量
+
+        操作符 也称为运算符
+        算术运算符
+        +   -   *   /   %   ++  --
+        比较运算符
+        <  >  <=  >= != == !==  ===(内容与类型是否一致)
+        逻辑运算符
+        && || ！
+        赋值运算符
+        =   +=  -=  *=  /= %=
+
+        456 + '123' >>> 456123 >>>string
+        456 - '123' >>> 333 >>>Number >>>>运算符'-'暗藏了将string转换为数字类型，隐式转换为数字
+        console.log(1 + true);  2
+        console.log(1 + false); 1
+        console.log(1 - true);  0
+        console.log(1 - false); 1
+
+        var a = 10;
+        var b = a++ + 20;
+        console.log(b); >>>> 30
+        console.log(a); >>>>>11
+        //+（-）放后面，便后面运算自增（自减)。
+        var a = 10;
+        var b = ++a + 20;
+        console.log(b); >>>>31
+        console.log(a); >>>>>11
+        
+        比较运算符
+        console.log(123 == '123') >>>true >>>>'=='存在隐式运算
+        console.log(false == 0); >>>>true >>>> '=='也存在隐式运算
+        console.log(123 === '123') >>>>false >>>内容和类型同时比较
+
+        括号
+        ++ -- ！
+        乘除
+        加减
+        比较
+        逻辑
+        赋值
+    </article>
+    
+</body>
+ 
+    
+</html> 

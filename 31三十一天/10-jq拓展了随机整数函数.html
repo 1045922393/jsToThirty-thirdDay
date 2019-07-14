@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            height: 500px;
+            background-color: blue;
+        }
+
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+
+
+    </div>
+</body>
+<script src="./jquery-2.2.2.js"></script>
+<script>
+    $.randomInt = function (n, m) {
+        if (!n) {
+            return Math.floor(Math.random() * (10 - 1 + 1) + 1);      //如果不传参数那么给的是1到10的随机整数
+        } else {
+            m = m || n + 10;                                        //如果只传入一个参数,那么返回的是范围在第一个参数到其加10之间的随机整数
+            return Math.floor(Math.random() * (m - n + 1) + n);
+        }
+    }
+    console.log($.randomInt(20, 40));
+</script>
+
+</html>

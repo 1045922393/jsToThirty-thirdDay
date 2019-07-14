@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>广告</title>
+    <style>
+        ul {
+            list-style: none;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+
+        div {
+            width: 1150px;
+            height: 400px;
+            margin: 50px auto;
+            border: 1px solid red;
+            overflow: hidden;
+        }
+
+        div li {
+            width: 240px;
+            height: 400px;
+            float: left;
+            transition: width 300ms;
+            background-color: rgba(0, 0, 0, .3);
+        }
+
+        div ul {
+            width: 1300px;
+        }
+
+        /* div {
+          background-image: url('');
+        } */
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <ul>
+            <li>
+                <a href="#">
+                    <img src="./images/1.jpg" alt="">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="./images/2.jpg" alt="">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="./images/3.jpg" alt="">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="./images/4.jpg" alt="">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="./images/5.jpg" alt="">
+                </a>
+            </li>
+        </ul>
+    </div>
+</body>
+<script>
+    let liArr = document.querySelectorAll('#box li');
+    let ima = document.querySelector('#box li img');
+    let ul = document.querySelector('#box');
+    liArr.forEach((val, ind) => {
+        val.addEventListener('mouseover', moveIn);
+        function moveIn() {
+            liArr.forEach((e, i) => {
+                e.style.width = (ul.clientWidth - ima.clientWidth) / 4 + 'px';
+            })
+            this.style.width = ima.clientWidth + 'px';
+            // console.log(this);
+        }
+    })
+    ul.addEventListener('mouseout', moveOut);
+    function moveOut() {
+        liArr.forEach(e => {
+            e.style.width = '240px';
+        })
+    }
+
+</script>
+
+</html>

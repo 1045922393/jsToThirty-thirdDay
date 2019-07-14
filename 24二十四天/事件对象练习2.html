@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        span{
+            position: absolute;
+            width: 50px;
+        }
+        body{
+            background-color: yellow;
+            height: 3333px;
+        }
+    </style>
+</head>
+<body>
+    <span>寂寞</span>
+    <div></div>
+</body>
+
+    <script>
+        document.onmousemove=function(e){
+            let x = e.pageX;
+            // console.log(x);
+            let y = e.pageY;
+            document.querySelector('span').style.top = (y+10)+'px'
+            document.querySelector('span').style.left = (x+10)+'px';
+        }
+    </script>
+</html>

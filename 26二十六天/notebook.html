@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <pre>
+        本地存储
+
+        浏览器开发者工具Application
+
+        localStorage.setItem('key','value');
+        键值对存储  只存储字符串，如果数据不是字符串，会自动转换为字符串存储
+        localStorage.getItem(key);
+        把存储在本地数据里面的东西获取出来 返回值 字符串 或者 null
+
+        JSON
+        存储数据的格式
+        语法：
+        所有的键以双引号包裹起来，数据类型只有数字和字符串，字符串必须用双引号包裹
+
+        js中对象转换为JSON函数API
+        JSON.stringify(对象)   //把对象转换成json形式，返回值是JSON字符串
+
+        JSON字符串转换为js对象
+        JSON.parse(满足JSON格式的字符串); //返回值js里面的对象，也可能是数组
+
+        keyCode
+        if(e.ctrlKey&&e.keyCode == 13) //判断ctrl + Enter
+        if(e.shiftKey&&e.keyCode==13)
+        if(e.altKey&&e.keyCode ==13)
+
+        阻止复制
+        1、防止选中<style>body{user-select:none;}</style>
+        2、防止右键 document.oncontextmenu = function(e){
+            e.preventDefault();
+        }
+        3、取消Ctrl+c的preventDefault();
+
+        document.onkeydown=function(e){
+            if(e.ctrilKey&&keyCode=='67'){
+                e.prevnetDefault();
+            }
+        }
+
+        getElementsByClassName 得到的HTMLCollection这种伪数组没有forEach的方法
+        querySelector   得到的NodeList这种伪数组可以用forEach的方法
+
+        获得静态资源需要在浏览器加载完毕时获取，因为加载图片需要时间，如果在图片加载时就获取图片宽高会出错
+        window.onload=function(){}
+
+        元素.offsetWidth        获得元素实际宽度
+
+        用js增加css的内嵌样式
+        创建元素&lt;style&gt;标签
+        在元素里面用innerHTML添加css语句
+        head标签元素appendchild已经编写好的style标签元素
+
+        微博知识点《
+        forEach((e,s)=>{
+
+        })
+        li = creatElement('li');
+        li.inneHTML = ''
+        arr.splice(要删除的索引位置,删除的个数,插入的元素)
+        JSON.stringify(arr);
+        localStorage.setItem(JSON.stringify(arr));
+        localstorage.getItem('索引名');
+        localstorage.setIteme
+        localstorage.getIteme
+        JSON.stringify(对象)
+        JSON.parse()
+        》
+    </pre>
+</body>
+
+</html>

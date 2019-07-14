@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <pre>
+    动画队列
+    jq对象.animate({键值对},执行时间).animate({键值对},执行时间).animate({键值对},执行时间) //注册多个动画形成动画队列
+
+    jq动画的.stop(是否清空动画队列,当前的动画结束是否到达目标效果)方法
+        $('.box').stop(true, true);// 不执行下一个动画，当前的动画会立刻结束并且到达目标效果
+
+        $('.box').stop(false, true);// 立刻结束当前动画，立刻到达目标效果，继续执行下一个动画
+  
+        $('.box').stop(false, false); // 不会立刻到达目标效果，而是在当前效果下，继续执行下一个动画
+  
+        $('.box').stop(true, false);// 也不到达目标效果，也不执行下一个动画，常用
+
+    jq对象.stop()   //阻断对象的动画队列
+
+    jq中非表单内容的API    
+    jq对象.html(html结构字符串)     //全部
+    jq对象.text()       //只拿文本
+ 
+    获得表单元素
+    jq对象.val()
+
+    创建新标签  //类似createElement
+    $('<li>我是新标签</li>>');
+
+    jq父对象.append(jq子元素)
+    jq子元素.appentTO(jq父对象)
+    jq父对象.prepend(jq子元素)
+    jq子元素.prependTo(jq父对象)
+    原位置的jq对象.before(要插入的jq元素)
+    原位置的jq对象.after(要插入的jq元素)
+
+    jq对象.remove()
+
+    jq事件委托
+    jq对象.on(事件类型,后代元素选择器,处理程序)
+
+    jq对象.parents(前代选择器)
+
+    js的ECMA6模板字符串 
+    `字符串的内容`  
+        这个字符串允许空格换行的存在
+        字符串可以设置变量解析的占位符${变量名}       //这个$是js的识别符号，不是jq的顶级对象
+
+    Attribute   attr    非开关  jq对象.attr(属性名,属性值) jq对象.attr(属性名)  ;
+    property    prop    开关    
+
+    $('input:checked')  //返回是input已经打了勾的伪数组
+
+    地址栏带数据
+    a href="www.1111.com?id=1&name=aaaa"
+
+    浏览器地址栏
+    location.search //返回地址栏带?的字符串
+    再利用    字符串.substring()        获得其中的数据
+
+    数组.filter(function(e,i){return 条件})        //返回的是满足条件的元素数组
+    数组.find(function(e,i){return 条件})          //返回的是满足条件的第一个元素
+</pre>
+</body>
+
+</html>

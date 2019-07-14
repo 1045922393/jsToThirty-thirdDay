@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>贪吃蛇</title>
+</head>
+<style>
+    div {
+        position: relative;
+        width: 1250px;
+        height: 650px;
+        border: 1px solid #000;
+    }
+
+    span {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        top: 0px;
+        left: 0px;
+        background-color: greenyellow;
+        transition: left 5s linear, top 5s linear;
+    }
+
+    /* div:hover {
+        transform: translateX(1300px) translateY(1000px);
+    } */
+</style>
+
+<body>
+    <div>
+        <span></span>
+    </div>
+</body>
+<script>
+    window.onclick = () => {
+        let snake = document.querySelector('span');
+        snake.style.left = '1000px';
+        window.onkeydown = (e) => {
+            if (e.keyCode == 40) {
+                console.log('down');
+                snake.style.width = '50px';
+                snake.style.height = '50px';
+                snake.style.top = snake.offsetTop + 1000 + 'px';
+                snake.style.left = snake.offsetLeft + 'px';
+                // snake.style.transform = 'translateX(200px)';
+
+            }
+            if (e.keyCode == 39) {
+                console.log('right');
+                snake.style.width = '50px';
+                snake.style.height = '50px';
+                snake.style.top = snake.offsetTop + 'px';
+                snake.style.left = snake.offsetLeft + 1000 + 'px';
+                // snake.style.transform = 'translateY(200px)';
+            }
+            if (e.keyCode == 37) {
+                console.log('left');
+                snake.style.width = '50px';
+                snake.style.height = '50px';
+                snake.style.top = snake.offsetTop + 'px';
+                snake.style.left = snake.offsetLeft - 1000 + 'px';
+                // snake.style.transform = 'translateY(200px)';
+            }
+            if (e.keyCode == 38) {
+                console.log('up');
+                snake.style.width = '50px';
+                snake.style.height = '50px';
+                snake.style.top = snake.offsetTop - 1000 + 'px';
+                snake.style.left = snake.offsetLeft + 'px';
+                // snake.style.transform = 'translateX(200px)';
+
+            }
+        }
+    }
+</script>
+
+</html>

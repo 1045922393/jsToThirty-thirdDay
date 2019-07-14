@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 600px;
+            margin: 20px auto;
+            text-align:center;
+        }
+        img{
+            display:block;
+            width: 100%;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="row">
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+    </div>
+    <div class="row">
+        <img src="../01林允儿.png" alt="" id="imga">
+    </div>
+</body>
+<script>
+    let btn = document.getElementsByTagName('button');
+    //console.dir(btn[0]);                //显示所有键值对
+    let imga = document.getElementById('imga')
+    for(let i = 0; i<btn.length;i++){
+        btn[i].index = i;
+        btn[i].onclick = changePic;     //函数存到了btn[i].onclick里面
+    }
+    console.dir(btn[0].onclick);    
+    // for(var all in btn[0]){
+    //     console.log(btn[0][all]);
+    // }
+   
+
+
+
+
+    function changePic(){
+        // console.log(a);
+        let index = this.index;
+        imga.src="../0"+(index+1)+"林允儿.png";
+        imga.title = '第'+(index+1);
+        
+    }
+</script>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <span>我是test</span>
+    </div>
+</body>
+<script>
+    let divInner = document.querySelector('div');
+    divInner.innerHTML = '<span>我是代替者</span>';
+    
+    divInner.onclick = function(){
+        var innerold = divInner.innerHTML;
+        console.log(innerold)
+        divInner.innerHTML = innerold+'<span>我是增加者</span>';
+    }
+</script>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 自定义对象
+        var Duixiang = {};
+        Duixiang.name = '对象';
+        Duixiang.way = function (){
+            console.log(Duixiang.name);
+        }
+        var Duixiang2 = new Object();
+        Duixiang2.name = '对象2';
+        Duixiang2.way = function(){
+            console.log(Duixiang2.name);
+        }
+        var Duixiang3 = {
+            name: '对象3',
+            way:function (){
+                console.log(Duixiang3.name)
+            }
+        }
+        Duixiang.way();
+        Duixiang2.way();
+        Duixiang3.way();
+        Duixiang3['way']();
+    </script>
+    <script>
+        // 封装定义对象的步骤
+        function creatObject(a,b){
+            var a={};
+            a.name = b;
+            a.way = function (){
+                console.log(a.name);
+            }
+            return a;
+        }
+        var Duixiang4 = creatObject(Duixiang4,'对象4');
+        // console.log(typeof(Duixiang4));
+        Duixiang4.way();
+        Duixiang4['way']();
+    </script>
+    <script>
+        // 自定义构建函数
+        function Test(a){
+            this.name = a;
+            this.way = function(){
+                console.log(this.name);
+            } 
+        }
+        var Duixiang5 = new Test('对象5');
+        Duixiang5.way();
+        var date = new Math();
+        for(var all1 in date ){
+            console.log(date[all1]);//for-in是仅仅对可遍历的属性有效
+        }
+
+
+
+        console.log(date);
+    </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //push的使用1
+                // var arr = [564,456,564654,12231,46345];
+                // var brr= [];
+                // for(i= arr.length-1;i>=0;i--){
+                //     brr.push(arr[i]);
+                // }
+                // console.log(brr);
+        //push的使用2
+
+                // var arr1 = [564,456,564654,12231,46345];
+                // var brr =[];
+                // for(i=arr1.length-1;i>=0;i--){
+                //     brr.push(arr1[i]);
+                // }
+                // console.log(brr);
+
+        // pop()的使用
+                // var arr1 = [564,456,564654,12231,46345];
+                // var brr =[];
+                // for(var i=arr1.length;i>0;i--){
+                //     // console.log(1)
+                //     brr.push(arr1.pop());
+                // }
+                // // brr.pop()
+                // console.log(brr);
+        
+        // splice的使用
+        // var arr1 =  [564,456,564654,12231,46345];
+        // arr1.splice(2,2,22,22,22,22);
+        // console.log(arr1);
+        // arr1.splice(1,9,22);
+        // console.log(arr1);
+
+        //.forEach(function(){})的使用
+        // var arr = [1,1,6,1,1];
+        // var sum = 0;
+        // arr.forEach(function(e){
+        //     sum+=e;
+        // })
+        // console.log(sum);
+
+        var arr = [5,8,2,1,4,6,9,3];
+        var b = arr.length-1;
+        for(var i = 0; i<Math.floor(b/2);i++ ){
+            arr[i]=arr[i]^arr[b-i];
+            arr[b-i]=arr[i]^arr[b-i];
+            arr[i]=arr[i]^arr[b-i];
+        }
+        console.log(arr);
+
+        function reserveArray(array){   //翻转函数，将需要翻转的函数名作为实参传入
+            var a =array.length-1;
+            for (var i = 0;i<Math.floor(a/2);i++){
+                array[i] = array[i]^array[a-i];
+                array[a-i] = array[i]^array[a-i];
+                array[i] = array[i]^array[a-i];
+            }
+            return array;
+        }
+
+        var brr = [5,8,2,1,4,6,9,3];
+        console.log(reserveArray(brr));
+
+    </script>
+</body>
+</html>

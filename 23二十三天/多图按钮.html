@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 600px;
+            margin: 20px auto;
+            text-align:center;
+        }
+        img{
+            display:block;
+            width: 100%;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="row">
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+    </div>
+    <div class="row">
+        <img src="../01林允儿.png" alt="" id="imga">
+    </div>
+</body>
+<script>
+    let btn = document.getElementsByTagName('button');
+    let imga = document.getElementById('imga')
+    for(let i = 0; i<btn.length;i++){
+        btn[i].onclick = function(){
+            imga.src="../0"+(i+1)+"林允儿.png";
+        }
+    }
+</script>
+</html>

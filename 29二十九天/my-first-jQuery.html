@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>菜鸟教程(runoob.com)</title>
+    <script src="./jquery.js">
+    </script>
+    <script>
+        // $(document).ready(function () {
+        //     $("p").click(function () {
+        //         $(this).hide();
+        //     });
+        // });
+        // jQuery(document).ready(function () {
+        //     $('p').click(function () {
+        //         $(this).hide();
+        //     });
+        // })
+        // $(function () {
+        //     $('p').click(function () {
+        //         $(this).hide();
+        //     });
+        // })
+        jQuery(function () {
+            $('p').click(function () {
+                $(this).fadeOut(500);
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <p>如果你点我，我就会消失。</p>
+    <p>继续点我!</p>
+    <p>接着点我!</p>
+</body>
+
+</html>

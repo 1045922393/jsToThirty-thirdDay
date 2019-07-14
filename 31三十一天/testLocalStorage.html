@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<input type="text" placeholder="请输入" id="testText">
+<input type="button" value="push" id="testPush">
+<ul id="testUL">
+
+</ul>
+</body>
+<script src="./jquery-2.2.2.js"></script>
+<script src="./封装日期.js"></script>
+<script src="./获得随机ID根据时间.js"></script>
+<script>
+    let localData = localStorage.getItem('testLocalData');  //JSON字符串
+    localData = JSON.parse(localData);  //数组
+    let testArr = localData || []   //数组
+    testArr.forEach((val, index) => {       //遍历数组取出数据
+        $('#testUL').append($(` <li id =\"${val.testID}\" > ${val.testData}</li > `));
+    })
+    $('#testPush').on('click', function () {
+        let testText = $('#testText').val();
+        // console.log()
+        let testObj = {};
+        testObj.testData = testText;
+        testObj.testDate = getTime();
+        testObj.testID = randomID();
+        testArr.push(testObj);      //将对象推进数组
+        let newTestData = JSON.stringify(testArr);
+        localStorage.setItem('testLocalData', newTestData);
+        $('#testUL').append($(`<li id=\"${testObj.testID}\" > ${testObj.testData}</li >`));
+        $('#testText').val('');
+    })
+    $('#testUL').on('dblclick', 'li', function () {
+        // console.log(this)
+        console.log($(this).attr('id'))
+        let delId = $(this).attr('id');
+        $(this).remove();
+        testArr.forEach(function (val, index) {
+            if (val.testID == delId) {
+                testArr.splice(index, 1);
+                let testTemp = JSON.stringify(testArr);
+                localStorage.setItem('testLocalData', testTemp)
+            }
+        })
+    })
+</script>
+
+</html>

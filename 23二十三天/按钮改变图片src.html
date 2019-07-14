@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>change picture</title>
+    <style>
+        div {
+            text-align: center;
+        }
+
+        img {
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>4</button>
+    </div>
+    <div>
+        <img type="text" src="../001林允儿.jpg" id="pic">
+    </div>
+    <script>
+        var pict = document.getElementById('pic');
+        var butt = document.getElementsByTagName('button');
+        butt[0].onclick = function () {
+            pict.src = "../002林允儿.jpg";
+            butt[0].classList.toggle('test-class');
+        }
+        butt[1].onclick = function () {
+            pict.src = "../003座位表.JPG";
+        }
+        butt[2].onclick = function () {
+            pict.src = "../就业班座位表.png";
+        }
+        butt[3].onclick = function () {
+            pict.src = "../001林允儿.jpg";
+        }
+
+        
+    </script>
+</body>
+
+</html>

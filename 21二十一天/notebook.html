@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        var a =  Math.floor(Math.random() * (m - n + 1) + n);    //获得一个[n,m]的随机整数
+        
+        date = new Date(2019,5,28,11,25,00);   //参数方式，需要月份减一，201906281125
+        date = new Date('2019-06-28 11:25:00');
+        date = new Date(时间戳);
+        创建自定义的时间对象
+
+        目标时间.getTime() //格林威治标准时间 (GMT) 1970 年 1 月 1 日至今的毫秒数。
+        目标时间.valueof()
+
+        console.log(Math.valueOf());    返回原始值
+
+        数组.push(5,1,4,4);  //往后面推进数字，返回一个新数组
+
+        pop()               //出栈，删除并返回数组的最后一个元素 pop() 方法将删除 arrayObject 的最后一个元素，把数组长度减 1，并且返回它删除的元素的值。如果数组已经为空，则 pop() 不改变数组，并返回 undefined 值。
+        unshift()           //向数组的开头添加一个或更多元素，并返回新的长度。 
+        shift()             //删除并返回数组的第一个元素 
+        splice (要插入或者删除的下标索引数字，要删除的元素个数，插入的元素1,插入的元素2,...)            //删除元素，并向数组添加新元素。 删除元素只会往后删，不会影响前面元素
+        数组.reverse;     //数组的翻转
+
+        数组.forEach(function(元素,索引可没有){});  //遍历数组,参数是个函数，返回值是一个undefined
+    
+        数组的数据筛选过滤
+        数组.filiter(function(元素,索引可没有){
+            return 筛选的条件;
+        })      //返回适合条件的数组
+
+        split   字符串分割成数组
+        join    数组连接成一个字符串  
+
+        null和undefined没有构造函数，不能调用对象函数，所以    null.toString() 和 undefined.toString() 无效
+
+        字符串之类的值类型也可以调用方法，在值类型调用方法的时候，JS会自动检测这个值类型是有有对应的构造函数，如果有，会先创建一个临时对象，使用这个临时对象调用方法之后，再把对象销毁
+        Number() String() Boolean() 这是三个简单类型的构造函数，null和undefined没有构造函数
+        (123).toString();
+        执行流程大致如下：
+        var obj = new Number(123);  obj.toString(); obj = null;
+            
+        String对象的方法
+        值类型.toSring();
+        stringObject.indexOf(检索的字符串,可选形参从何处开始检索);        
+    </pre>
+</body>
+</html>

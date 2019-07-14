@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>事实是1个</li>
+        <li>事实是2个</li>
+        <li>事实是3个</li>
+        <li>事实是4个</li>
+        <li>事实是5个</li>
+    </ul>
+</body>
+    <script>
+        document.querySelector('ul').onclick=function(e){
+            if(e.target.nodeName==='LI'){
+                // console.log('234');
+
+                document.querySelector('ul').innerHTML = document.querySelector('ul').innerHTML+'<li>我是新生</li>'
+            }
+        }
+    </script>
+</html>

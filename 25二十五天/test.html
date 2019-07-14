@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button class="ddd">删除</button>
+    <button class="ccc">增加</button>
+   <ul>
+       <li>intererting</li>
+       <li>intererting</li>
+       <li>intererting</li>
+       <li>intererting</li>
+       <li>intererting</li>
+   </ul>
+</body>
+<script>
+    let ddd = document.querySelector('.ddd');
+    let ccc = document.querySelector('.ccc');
+    // let arr= [1,1,2,3,434,5,5,2];
+    // for (let b in arr){
+    //     console.log(b);
+    //     console.log(arr[b])
+    //     // console.log(c);
+    // }
+    let aaa = document.querySelector('ul');
+    
+    // console.log(eee.innerHTML = '<div>interseting</div>');
+    // aaa.innerHTML = '<span>sadfsadf</span>';
+    // bbb.innerText = '<span>sadfsadf</span>';
+    
+        ccc.onclick=function(){
+            eee = document.createElement('li');     //如果想要每次点击都有新加入，那么需要把声明放进函数里面
+            eee.innerText = 'boring';
+            aaa.appendChild(eee);
+        }
+        ddd.onclick=function(){
+            let bbb = document.querySelectorAll('li');  //动态获得元素
+
+            aaa.removeChild(bbb[0]);
+        }
+</script>
+</html>

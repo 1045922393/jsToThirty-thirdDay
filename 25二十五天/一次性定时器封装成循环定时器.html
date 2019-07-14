@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let li = 0;
+        let j = 0
+        while (j<=11) {
+            setTimeout(function(){      //先注册事件，1秒后在运行，循环了12次，注册了12个事件
+                console.log(li);
+                li++;
+            }, 1000);
+            j++;
+            console.log(li);
+        }
+
+    </script>
+</body>
+
+</html>

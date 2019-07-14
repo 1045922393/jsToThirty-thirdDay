@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <pre>
+        动画结束事件
+        transitionend
+        animationend
+        注意    这两个事件不支持'on'注册，只能用addEventListener('transitionend',函数);
+
+        clientWidth     可视区域宽  content + padding
+        clientHeight    可视区域高  content+ padding
+
+        获取任意样式的当前值window.getComputedStyle(element)
+        作用： 获取最终作用在该元素身上的所有的样式
+        参数： element 就是你要获取样式的元素
+        返回值： 是一个对象，对象里面有作用在该元素身上的所有的样式的集合
+        得到结果之后，想要什么属性的值，直接点出来，或者使用键的方式访问
+        但是注意： 从该对象身上得到所有的属性的值，都是字符串，当我们需要进行数值计算的时候，千万要记得转换为数字先
+    </pre>
+</body>
+<script>
+    // let a = window.getComputedStyle(document.querySelector('pre'));
+
+    // for(let key in a){
+    //     a = key: a[key]
+    // }
+    // console.log(a['0']) // a = key: a[key]
+</script>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            height: 500px;
+            background-color: blue;
+        }
+
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+
+
+    </div>
+
+    <input type="text" width='200'>
+</body>
+<script src="./jquery-2.2.2.js"></script>
+<script>
+    $.fn.bGC = function (color) {
+        if (!color) {
+            return $(this).css('background-color');
+        } else {
+            $(this).css('background-color', color);
+            return $(this);
+        }
+    }
+    console.log($('body').bGC('pink'))
+    $('input').on('keydown', function (e) {
+        e.preventDefault();
+    })
+</script>
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+    //let声明与for循环会形成一个块作用域,每次循环的作用域不同
+    //let声明的变量只能在自己的作用域，不能跨到同级的其他作用域作用
+    //let声明的变量在大作用域可以对其下的小作用域有效，但反过来不行
+    
+    根据css选择器获得元素，还支持CSS选择器嵌套
+    document.querySelectorAll("css选择器")    //符合选择器的所有元素,返回一个伪数组，需要[索引]获取
+    document.querySelector("css选择器")         //符合选择器的第一个元素，返回一个对象
+
+    元素对象.addEventListener('事件类型',function(){},是否在捕获阶段触发事件)  //可以重复注册事件
+    元素对象.on事件类型 = function(){}              //只能注册一个事件，多次注册会覆盖
+
+    事件触发三流程
+        事件捕获(从外至内)
+        目标阶段
+        事件冒泡(再从内至外)
+    
+    当事件传播到某个元素的时候，如果这个元素身上也注册了同样的事件，也会调用对应事件处理程序
+
+    innerHTML   元素对象的内部的html结构
+
+    事件委托
+        ul.onclick= function(e){
+            if(e.target.nodeName === 'LI'){
+                行为;
+            }
+        }
+        原理： 在已经存在的钱袋元素身上，先注册一个时间，一但后代元素出发了同类型的事件，先判断一下，时间目标是否满足条件的后代元素，如果满足，就执行某些代码。
+
+    事件对象——事件函数中放入形参，此形参就是鼠标活动的对象，一个个键值对
+        对象名.onclick = function(e){
+            console.log(e);
+            //形参e指的是事件对象,
+            //e.target 是事件对象的一个属性，指的是事件对象的触发源，返回一个对象元素
+            //e.clientX 触发事件时鼠标在浏览器可视窗口的坐标X值
+            //e.pageX 触发事件时鼠标在浏览器页面的坐标X值
+            //e.target.nodeName 触发源的大写，返回对象元素的大写名字
+        }
+
+    新事件类型  
+    onmousemove   鼠标移动
+    onmousedown     鼠标按下
+    onmouseup       鼠标松开
+
+    获得HTML
+    document.documentElement
+
+    页面的根
+    documnent
+
+    offset系列的API
+    offsetParent    
+    //如果元素的前代没有定位，那么属性offsetParent返回就是html或者body
+    //如果元素的前代有定位，那么属性offsetParent返回的就是最近的父代
+    //如果元素自身是fixed定位，那么属性offsetParent返回的是null
+    offsetLeft  //返回的是元素左边离setoffParent的距离,受两个共同影响，定位下的left和margin-left
+    offsetTop
+
+    阻止默认行为
+        阻止a标签不跳转
+            1\href="javascript:void(0)" 或者 href="javascript"
+            2\ 给跳转a标签加个事件如下 
+            doument.querSelector("#link").onclick=function(){
+                return false;
+            }
+            3\利用事件对象中的 preventDefault()
+            doument.querSelector("#link").onclick=function(e){
+                e.preventDefault();
+            }
+
+        阻止浏览器右键  contextmenu
+        document.oncucontextmenu = function(e){
+            e.prevenDefault();
+        }
+
+        <!-- 
+        <style>
+            body{
+                user-select: none;
+            }
+        </style> 
+        -->
+        阻止冒泡事件
+        事件对象.stopPropagation();     //在当前的元素上设置，这样点击当前元素也不会触发前代元素。
+</pre>
+</body>
+</html>

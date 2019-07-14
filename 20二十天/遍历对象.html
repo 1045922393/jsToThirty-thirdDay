@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Yhi(a,b,c){
+            this.name = a;
+            this.age = b;
+            this.key = c;
+        }
+        var hwy = new Yhi('hu','23岁','tall');
+        // console.log(hwy.name);
+        for(var key in hwy){
+            console.log(hwy[key]);
+        }
+        console.log(hwy['key']);
+        var earth = new Date();
+        console.log(typeof(earth));
+        console.log(typeof(Date));
+        for(var kiki in earth){
+            console.log(earth[kiki]);
+        }
+    </script>
+</body>
+</html>

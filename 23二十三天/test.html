@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .big{
+            width: 50px;
+            height: 50px;
+        }
+        .BGC{
+            background-color: skyblue;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <button id ="btn">黑色</button>
+    <button id ="btn2">粉色</button>
+    <button id ="btn3">黄色</button>
+    <button id="btnBig">变大</button>
+    <button>去掉样式</button>
+    <script>
+        (function(){
+            var btn_open = document.getElementById('btn');
+            var btn_close = document.getElementById('btn2');
+            var btn_yellow = document.getElementById('btn3');
+            var btn_big = document.getElementById('btnBig');
+            var bodyBgc = document.body;
+        
+        console.log(btn_open);
+        btn_open.onclick  = function(){
+            bodyBgc.style.backgroundColor="#000";
+        }
+        btn_close.onclick  = function(){
+            bodyBgc.style.backgroundColor="pink";
+        }
+        btn_yellow.onclick = function(){
+            bodyBgc.style.backgroundColor = 'yellow';
+        }
+        btn_big.onclick = function(a){
+            console.log(a);
+            btn_big.classList.toggle('big');
+            btn_big.classList.toggle('BGC');
+            bodyBgc.classList.toggle('BGC');
+        }
+        function taketest(a){
+            console.log(a);
+        }
+        // var
+        taketest();
+        })()
+    </script>
+</body>
+</html>
